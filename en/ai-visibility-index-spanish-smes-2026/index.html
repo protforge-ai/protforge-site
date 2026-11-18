@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI visibility index of Spanish SMEs, November 2026 — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/en/ai-visibility-index-spanish-smes-2026">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/indice-visibilidad-ia-pymes-2026">
+<link rel="alternate" hreflang="en" href="https://protforge.com/en/ai-visibility-index-spanish-smes-2026">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/en/ai-visibility-index-spanish-smes-2026">
+<meta name="description" content="AI visibility index of Spanish SMEs, November 2026: 29 businesses, 145 Claude answers and 143 ChatGPT and Perplexity answers. Mention rate by sector, llms.txt, structured data and technical score. Open CSV data.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="AI visibility index of Spanish SMEs, November 2026">
+<meta property="og:description" content="How often ChatGPT, Claude and Perplexity name a Spanish SME when asked for the best provider in its field and city. Our own data, small sample, open method.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://protforge.com/en/ai-visibility-index-spanish-smes-2026">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+  .updated{color:var(--ink-2);font-size:15px;margin:0 0 22px}
+  .hero h1{max-width:22ch}
+  .prose p{max-width:68ch;margin:0 0 14px}
+  .prose ul{max-width:68ch;padding-left:20px;margin:0 0 14px}
+  .prose li{margin:0 0 8px}
+  .finding{display:grid;grid-template-columns:1fr;gap:6px;padding:24px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.finding{grid-template-columns:190px 1fr;gap:32px}}
+  .finding:first-of-type{border-top:1px solid var(--line)}
+  .finding .num{font-family:"Instrument Serif",Georgia,serif;font-size:52px;line-height:1;color:var(--cobalt)}
+  .finding .num small{display:block;font-family:"Instrument Sans",system-ui,sans-serif;font-size:13.5px;color:var(--ink-2);margin-top:6px;line-height:1.35}
+  .finding h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px;line-height:1.15}
+  .finding p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin:0 0 12px}
+  table{border-collapse:collapse;width:100%;min-width:640px;font-size:15.5px}
+  th,td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+  th:first-child,td:first-child{text-align:left;white-space:normal}
+  thead th{font-weight:600;color:var(--ink-2);font-size:13.5px;border-bottom:1px solid var(--ink)}
+  tbody tr:last-child td{border-bottom:0}
+  tr.total td{font-weight:600;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) tr.total td{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .note{color:var(--ink-2);font-size:14.5px;max-width:68ch;margin:0 0 14px}
+  .todo{counter-reset:t;list-style:none;padding:0;margin:0;border-top:1px solid var(--line)}
+  .todo li{counter-increment:t;position:relative;padding:20px 0 20px 48px;border-bottom:1px solid var(--line);max-width:none}
+  .todo li:before{content:counter(t);position:absolute;left:0;top:16px;font-family:"Instrument Serif",Georgia,serif;font-size:32px;color:var(--cobalt);line-height:1}
+  .todo li b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:24px;margin-bottom:4px}
+  .todo li span{color:var(--ink-2);display:block;max-width:64ch}
+  .cta-box{border:1px solid var(--cobalt);border-radius:6px;padding:28px 24px}
+  .cta-box p{max-width:60ch;color:var(--ink-2);margin:0 0 18px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://protforge.com/#org",
+  "name": "ProtForge",
+  "legalName": "PROTFORGE SL",
+  "url": "https://protforge.com/",
+  "email": "hello@protforge.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Guillermo Llopis",
+    "jobTitle": "AI scientist"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "areaServed": ["ES", "US", "EU"],
+  "knowsLanguage": ["es", "en", "ca"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "AI visibility index of Spanish SMEs, November 2026",
+  "description": "How often ChatGPT, Claude and Perplexity name Spanish SMEs when asked for the best provider in their field and city, with method, limits and open data.",
+  "url": "https://protforge.com/en/ai-visibility-index-spanish-smes-2026",
+  "mainEntityOfPage": "https://protforge.com/en/ai-visibility-index-spanish-smes-2026",
+  "inLanguage": "en",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-18",
+  "author": { "@id": "https://protforge.com/#org" },
+  "publisher": { "@id": "https://protforge.com/#org" },
+  "about": "Visibility of Spanish SMEs in ChatGPT, Claude and Perplexity answers"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "AI visibility index of Spanish SMEs, November 2026 (aggregate data)",
+  "description": "Aggregate metrics from 33 AI visibility audits (29 Spanish SMEs and 4 US businesses, the latter excluded from the headline figures): mention and citation rate per engine, presence of llms.txt and JSON-LD structured data, and technical score, by sector. No company names.",
+  "url": "https://protforge.com/en/ai-visibility-index-spanish-smes-2026",
+  "inLanguage": "en",
+  "datePublished": "2026-11-17",
+  "dateModified": "2026-11-18",
+  "temporalCoverage": "2026-11-16/2026-11-18",
+  "spatialCoverage": { "@type": "Place", "name": "Spain" },
+  "keywords": ["AI visibility", "GEO", "llms.txt", "structured data", "SMEs", "ChatGPT", "Claude", "Perplexity"],
+  "creator": { "@id": "https://protforge.com/#org" },
+  "publisher": { "@id": "https://protforge.com/#org" },
+  "measurementTechnique": "Five unbranded buyer questions per business (category and city) sent to Claude (CLI) and, on a subsample of 15, to ChatGPT and Perplexity in their logged-out web versions; we record whether the business is named (mention, counted with per-business name matching: name variants and domain) and whether its domain appears among the sources (citation). Technical crawl of up to 25 pages per site: robots.txt, llms.txt, JSON-LD and the aieo-audit 0-100 technical score. Prompts are in Spanish.",
+  "variableMeasured": ["Mention rate (% of answers)", "Citation rate (% of answers)", "llms.txt present", "JSON-LD types", "Technical score (0-100)"],
+  "distribution": {
+    "@type": "DataDownload",
+    "encodingFormat": "text/csv",
+    "contentUrl": "https://protforge.com/data/indice-visibilidad-ia-pymes-2026-11.csv"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What share of Spanish SMEs show up in ChatGPT, Claude and Perplexity answers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In our sample of 29 Spanish SMEs, Claude named the business in 31.7% of answers (46 of 145), and 12 of the 29 never appeared in any of the five questions. In a subsample of 15 businesses, ChatGPT named the business in 41.9% of answers, Claude in 26.7% and Perplexity in 26.1%; 11 of the 15 were picked because Claude had not named them, so the subsample is not suited to comparing engines in absolute terms. The sample is small and not representative, so the figures describe this sample, not Spanish SMEs in general."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does having an llms.txt make AI engines recommend you more?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In our data, businesses with an llms.txt (12 of 29) were named by Claude in 40.0% of answers versus 25.9% for those without one. That is an association, not proof of cause: the sectors with the most llms.txt files (marketing agencies and tech companies) live off online marketing and probably stand out for other reasons too. An llms.txt is cheap to add and worth having, but it does not replace third-party mentions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How was AI visibility measured?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For each business we sent five buyer questions that do not name the brand (for example, 'What are the best companies for a trustworthy dentist in central Valencia?', in Spanish). A mention means the business is named in the answer; a citation means its domain appears among the sources. We used Claude for all 29 businesses and, for 15 of them, also ChatGPT and Perplexity in their logged-out web versions, between 16 and 18 November 2026. Mentions are counted with per-business name matching (name variants and domain)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download the data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The CSV with aggregate figures by sector and by engine is at https://protforge.com/data/indice-visibilidad-ia-pymes-2026-11.csv. It contains no company names. The figures are generated by aieo-audit, the tool we use in our audits."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Sections">
+      <a href="#findings">Findings</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#method">Method</a>
+      <a href="#faq">FAQ</a>
+      <a href="/en/ai-visibility">AI visibility</a>
+      <a href="/es/indice-visibilidad-ia-pymes-2026" hreflang="es">Español</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <p class="updated">Updated: 18 Nov 2026 (count corrected, see method) · next edition: December 2026</p>
+    <h1>AI visibility index of Spanish SMEs, November 2026</h1>
+    <p class="lede">We asked ChatGPT, Claude and Perplexity «what is the best X in Y» for 29 Spanish SMEs across six sectors and counted how often each one is named. The sample is small and not random, and we state its limits. The data is ours and it is open.</p>
+    <a class="cta" href="#findings">See the findings</a>
+    <a class="cta secondary" href="/data/indice-visibilidad-ia-pymes-2026-11.csv" download>Download the CSV</a>
+  </div>
+
+  <section id="findings">
+    <h2>Six findings</h2>
+    <p class="intro">All figures are for Spanish SMEs. The sample size of each is in brackets.</p>
+    <div class="finding">
+      <div class="num">31.7%<small>of Claude answers name the business (46 of 145)</small></div>
+      <div><h3>More than half show up sometimes, four in ten never</h3><p>Of the 29 SMEs, 17 were named at least once across five questions and 12 never appeared. Only 3.4% of Claude answers (5 of 145) linked the business's own website as a source.</p></div>
+    </div>
+    <div class="finding">
+      <div class="num">1 of 7<small>dental clinics named by Claude (2 of 35 answers)</small></div>
+      <div><h3>Sector matters more than the website</h3><p>Only 1 of 7 dental clinics appeared in Claude, while marketing agencies (3 of 3), law firms (5 of 5) and other health and aesthetics clinics (5 of 7) came up often. With 3 to 7 businesses per sector this is a hint, not a conclusion.</p></div>
+    </div>
+    <div class="finding">
+      <div class="num">41.9%<small>ChatGPT web (31 of 74); Claude 26.7% (20 of 75); Perplexity web 26.1% (18 of 69)</small></div>
+      <div><h3>Each engine names different businesses</h3><p>In a subsample of 15 businesses, ChatGPT named 8, Perplexity 7 and Claude 6. Visibility cannot be measured on a single engine. The subsample is mixed: 11 businesses were picked because they did not appear in Claude (ChatGPT 22.2%, Perplexity 14.8%, Claude 5.5%) and 4 fertility and physiotherapy clinics were not (ChatGPT 95%, Claude 85%, Perplexity 66.7%), so it is not suited to comparing engines in absolute terms.</p></div>
+    </div>
+    <div class="finding">
+      <div class="num">72<small>average technical score out of 100 (median 72; range 51 to 93)</small></div>
+      <div><h3>The technical side is fine except structured data</h3><p>By area, the average is 88 for trust signals, 82 for readability without JavaScript, 75 for on-page content, 71 for crawlers, 62 for discoverability and 55 for structured data, the lowest. None of the 29 sites blocks AI crawlers in robots.txt, so access is not the problem.</p></div>
+    </div>
+    <div class="finding">
+      <div class="num">41%<small>have an llms.txt (12 of 29)</small></div>
+      <div><h3>llms.txt: nearly half already have one</h3><p>Businesses with an llms.txt were named by Claude in 40.0% of answers and those without in 25.9%. It is an association, not a cause: the sectors that have it most (marketing, tech) live off online marketing and probably stand out for other reasons too.</p></div>
+    </div>
+    <div class="finding">
+      <div class="num">28%<small>declare a local-business type (8 of 29) and 28% have FAQPage (8 of 29)</small></div>
+      <div><h3>Nearly all have JSON-LD, few the right kind</h3><p>28 of 29 sites publish some JSON-LD, but in many cases only the generic markup from the CMS (WebSite, WebPage). Only 8 declare a local-business type (LocalBusiness, Dentist, MedicalClinic, LegalService and similar) and 19 an Organization.</p></div>
+    </div>
+  </section>
+
+  <section id="sectors">
+    <h2>By sector</h2>
+    <p class="intro">Claude sample, 5 questions per business. With 3 to 7 businesses per row, do not compare rows by decimals: they only show the order of magnitude.</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Sector</th><th>Businesses</th><th>Claude mentions</th><th>Avg. technical score</th><th>With llms.txt</th><th>With FAQPage</th></tr></thead>
+        <tbody>
+          <tr><td>Dental clinics</td><td>7</td><td>6%</td><td>69</td><td>29%</td><td>43%</td></tr>
+          <tr><td>Other clinics (aesthetics, fertility, physiotherapy)</td><td>7</td><td>54%</td><td>71</td><td>29%</td><td>29%</td></tr>
+          <tr><td>Law firms</td><td>5</td><td>44%</td><td>73</td><td>20%</td><td>0%</td></tr>
+          <tr><td>Education and languages</td><td>4</td><td>5%</td><td>66</td><td>25%</td><td>0%</td></tr>
+          <tr><td>Marketing agencies</td><td>3</td><td>60%</td><td>76</td><td>100%</td><td>33%</td></tr>
+          <tr><td>Other (real estate, industrial, software)</td><td>3</td><td>27%</td><td>86</td><td>100%</td><td>67%</td></tr>
+          <tr class="total"><td>All Spanish SMEs</td><td>29</td><td>32%</td><td>72</td><td>41%</td><td>28%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Mentions: share of the 5 answers per business in which Claude names the business (145 answers in total). Rows are ordered by sector, not by result.</p>
+
+    <h3 style="font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:26px;margin:36px 0 12px">Three engines, subsample of 15 businesses</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Engine (web version, logged out)</th><th>Answers</th><th>Mention rate</th><th>Citation rate</th><th>Businesses named</th></tr></thead>
+        <tbody>
+          <tr><td>ChatGPT</td><td>74</td><td>41.9%</td><td>21.6%</td><td>8 of 15</td></tr>
+          <tr><td>Perplexity</td><td>69</td><td>26.1%</td><td>7.2%</td><td>7 of 15</td></tr>
+          <tr><td>Claude</td><td>75</td><td>26.7%</td><td>2.7%</td><td>6 of 15</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Mixed subsample: 11 businesses (6 dental clinics, 3 education centres, 1 aesthetics clinic and 1 law firm) were re-audited because Claude had not named them in the first count; 4 (3 fertility clinics and 1 physiotherapy clinic) were not picked that way and score much higher. So it is not suited to comparing engines in absolute terms or to estimating the overall rate, and the Claude row is not comparable with the table above (a different set of answers). 7 of 225 possible answers were dropped as empty or failed (1 ChatGPT; 6 Perplexity, which asked to sign up or timed out).</p>
+  </section>
+
+  <section id="what-to-do">
+    <h2>What to do</h2>
+    <p class="intro">Five things, from cheapest to slowest. None guarantees a mention, but all of them move signals you control.</p>
+    <ol class="todo">
+      <li><b>Publish an llms.txt</b><span>A short file at the site root saying who you are, what you sell, where, with links to your key pages. An afternoon's work.</span></li>
+      <li><b>Declare your business with structured data</b><span>JSON-LD with the right type (LocalBusiness or a subtype such as Dentist, LegalService or MedicalClinic), address, opening hours and FAQPage on service pages. 72% of the sample does not declare a local-business type.</span></li>
+      <li><b>Earn third-party mentions</b><span>Only 3.4% of answers link the business's own site: in the answers we reviewed, many sources are directories and comparison pages. Get listed in the directories of your sector and city.</span></li>
+      <li><b>Look after reviews</b><span>Recent, answered reviews on Google and sector directories, with the service name and the city in the text.</span></li>
+      <li><b>Put prices on your site</b><span>Buyer questions include «on a tight budget»: a page with explicit prices or ranges and an update date gives engines something concrete to cite.</span></li>
+    </ol>
+  </section>
+
+  <section id="method" class="prose">
+    <h2>Method and limits</h2>
+    <p><b>Sample.</b> 33 businesses audited between 16 and 18 November 2026, of which 29 are Spanish SMEs (12 in Valencia, 8 in Barcelona, 6 in Madrid and 3 in other cities) and 4 are US businesses that are left out of every figure on this page. We picked them as prospective clients for our audit: the sample is not random and over-represents SMEs with their own website and a local presence in large cities.</p>
+    <p><b>Prompts.</b> For each business, five buyer questions that do not name the brand, built from its category and city («What are the best companies for…?», «I need help with… Who do you recommend?», «How do I choose a provider for…?», among others). One of the five asks for alternatives to a known competitor, which can push the engine to list competitors. The prompts are in Spanish.</p>
+    <p><b>Engines.</b> Claude for all 29 businesses (145 answers). For 15 of them, also ChatGPT and Perplexity in their web versions, logged out, so with no history or personalisation. Google AI Overviews was left out because it blocks automation. These engines are not deterministic: the same question can return different answers on the same day.</p>
+    <p><b>What we count.</b> Mention: the business is named in the answer. Citation: its domain appears among the sources. Mentions are counted with per-business name matching (full name, variants without prefixes such as «Clínica Dental» or «Abogados», short forms and domain, accent- and case-insensitive except for acronyms), and empty or failed answers are dropped. A 17 November version of this page undercounted some short or symbol-bearing names (for example «CREA», «Art &amp; Dent» or «CODEX»); the figures were recounted and corrected on 18 November. We have not reviewed every answer by hand.</p>
+    <p><b>Technical data.</b> One crawl per business of up to 25 pages: robots.txt, llms.txt, JSON-LD types and a 0-100 score across six areas, with aieo-audit, the tool we use in our audits. JSON-LD counts if it appears on any crawled page.</p>
+    <p><b>Limits.</b></p>
+    <ul>
+      <li>Small sample (3 to 7 businesses per sector, 15 in the three-engine subsample) and not representative: the figures describe these businesses, not Spanish SMEs in general.</li>
+      <li>We do not mix Claude with the three-engine data: they are two separate sets, and the second is a mixed subsample: 11 of its 15 businesses were picked because Claude had not named them.</li>
+      <li>Five questions per business give a snapshot, not a precise measurement; each answer is a single run.</li>
+      <li>Comparisons (for example, with and without llms.txt) are associations and are confounded by sector.</li>
+      <li>A snapshot from a few days in November (16 to 18). We will repeat it every month and publish the changes.</li>
+    </ul>
+    <p>The aggregate data is in <a href="/data/indice-visibilidad-ia-pymes-2026-11.csv" download>indice-visibilidad-ia-pymes-2026-11.csv</a>. It contains no names of businesses or of competitors that appear in the answers.</p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <details><summary>What share of Spanish SMEs show up in ChatGPT, Claude and Perplexity answers?</summary><p>In our sample of 29 Spanish SMEs, Claude named the business in 31.7% of answers (46 of 145), and 12 of the 29 never appeared in any of the five questions. In a subsample of 15 businesses, ChatGPT named the business in 41.9% of answers, Claude in 26.7% and Perplexity in 26.1%; 11 of the 15 were picked because Claude had not named them, so the subsample is not suited to comparing engines in absolute terms. The sample is small and not representative, so the figures describe this sample, not Spanish SMEs in general.</p></details>
+    <details><summary>Does having an llms.txt make AI engines recommend you more?</summary><p>In our data, businesses with an llms.txt (12 of 29) were named by Claude in 40.0% of answers versus 25.9% for those without one. That is an association, not proof of cause: the sectors with the most llms.txt files (marketing agencies and tech companies) live off online marketing and probably stand out for other reasons too. An llms.txt is cheap to add and worth having, but it does not replace third-party mentions.</p></details>
+    <details><summary>How was AI visibility measured?</summary><p>For each business we sent five buyer questions that do not name the brand (for example, «What are the best companies for a trustworthy dentist in central Valencia?», in Spanish). A mention means the business is named in the answer; a citation means its domain appears among the sources. We used Claude for all 29 businesses and, for 15 of them, also ChatGPT and Perplexity in their logged-out web versions, between 16 and 18 November 2026. Mentions are counted with per-business name matching (name variants and domain).</p></details>
+    <details><summary>Can I download the data?</summary><p>Yes. The CSV with aggregate figures by sector and by engine is at <a href="/data/indice-visibilidad-ia-pymes-2026-11.csv" download>/data/indice-visibilidad-ia-pymes-2026-11.csv</a>. It contains no company names. The figures are generated by aieo-audit, the tool we use in our audits.</p></details>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="cta-box">
+      <h2>What about your business?</h2>
+      <p>The AI visibility audit measures the same thing as this index, but with 50 to 100 questions about your sector and your competitors on every engine, plus the technical review and a prioritised plan. $1,500 (1.200 € + VAT for Spanish clients), report and a 45-minute call within 5 working days.</p>
+      <a class="cta" href="/en/ai-visibility#pricing">See the AI visibility audit ($1,500)</a>
+    </div>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, Spain</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Legal</a></span>
+    <span><a href="/en/services">Services</a></span>
+    <span><a href="/en/ai-visibility">AI visibility</a></span>
+    <span><a href="/es/ley-ia" hreflang="es">Ley de IA (ES)</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# ProtForge
+
+> ProtForge is an independent AI consultancy in Barcelona, Spain, run by Guillermo Llopis (AI scientist, PhD research on hallucination detection in LLMs). Fixed-price work in AI visibility (GEO and technical SEO), AI automation, software development, LLM evaluation, EU AI Act compliance and fractional AI leadership. Clients in Spain, the EU and the US.
+
+## Services
+
+- [Services overview (EN)](https://protforge.com/en/services): all services with starting prices.
+- [Servicios (ES)](https://protforge.com/es/servicios): lista completa con precios.
+- [AI visibility audit](https://protforge.com/en/ai-visibility): measures whether ChatGPT, Claude, Perplexity and Google AI Overviews recommend a business, plus technical crawl and fix plan. Audit $1,500 (1.200 EUR + VAT in Spain), 5 working days. Implementation from 2.500 EUR. Monthly tracking $1,000/month (900 EUR/month).
+- [Auditoría de visibilidad en IA](https://protforge.com/es/visibilidad-ia): versión en español.
+- [Diagnóstico de la Ley de IA](https://protforge.com/es/ley-ia): EU AI Act diagnostic, 4.900 EUR + VAT, two weeks, up to five AI systems.
+- [LLM evaluation and hallucination audit](https://protforge.com/en/llm-evaluation-audit): evaluation set built from the client's own traffic, hallucination, quality, retrieval and agent-failure rates, harness handed over for CI. From $3,500 fixed price, 2 weeks.
+- [LLM reliability audit](https://protforge.com/#services): hallucination and groundedness evaluation built from the client's own traffic, from 3.500 EUR.
+- AI automation for businesses (document assistants, email/invoice/PDF automation, internal agents): from 3.500 EUR, fixed scope, 2 to 4 weeks.
+- Software development and MVPs (web, apps, SaaS, integrations, APIs): from 6.000 EUR.
+- Fractional AI lead, 1 to 2 days a week: 4.000 EUR/month ($4,000/month).
+- AI training for teams (half-day or full-day workshops): from 1.500 EUR.
+
+## Research
+
+- [Hallucination detectors comparison](https://protforge.com/research/hallucination-detectors): open comparison of hallucination detectors, with the groundcheck package.
+
+- [Índice de visibilidad en IA de pymes españolas, noviembre de 2026](https://protforge.com/es/indice-visibilidad-ia-pymes-2026): own data from 29 Spanish SMEs audited on ChatGPT, Claude and Perplexity (mention rate by sector, llms.txt, structured data); small non-representative sample, method stated.
+- [AI visibility index of Spanish SMEs, November 2026](https://protforge.com/en/ai-visibility-index-spanish-smes-2026): English version.
+- [Index data (CSV)](https://protforge.com/data/indice-visibilidad-ia-pymes-2026-11.csv): aggregate figures by sector and engine, no company names.
+
+## Contact
+
+- Email: hello@protforge.com
+- Company: PROTFORGE SL, Barcelona, Spain
+- Legal notice: https://protforge.com/legal

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheap hallucination checks — ProtForge research</title>
+<link rel="canonical" href="https://protforge.com/research/hallucination-detectors">
+<meta name="description" content="We benchmarked three cheap hallucination detectors on 900 human-annotated RAG answers from six LLMs (RAGTruth). They catch most hallucinations, but only by flagging about half of the correct answers too.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Cheap hallucination checks catch most errors, and half your good answers">
+<meta property="og:description" content="A benchmark of lexical, numeric and NLI detectors on RAGTruth, with code.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{--paper:#F2F4F3;--ink:#0F2420;--ink-2:#3B4E49;--line:#C9D2CE;--cobalt:#1E3FB8;--flag:#C8471B;--ok:#1D7A4E;--mark:#FFF1C2;--max:760px}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0F1B18;--ink:#EDF2EF;--ink-2:#A9B8B2;--line:#2A3D37;--cobalt:#8FA8FF;--flag:#FF8A5B;--ok:#5CC48E;--mark:#3A3414}}
+  :root[data-theme="dark"]{--paper:#0F1B18;--ink:#EDF2EF;--ink-2:#A9B8B2;--line:#2A3D37;--cobalt:#8FA8FF;--flag:#FF8A5B;--ok:#5CC48E;--mark:#3A3414}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  header.top a.back{font-size:15px;color:var(--ink-2);text-decoration:none}
+  h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(34px,5.4vw,54px);line-height:1.05;letter-spacing:-.015em;margin:56px 0 18px}
+  .meta{color:var(--ink-2);font-size:14.5px;margin:0 0 36px}
+  h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(26px,3.2vw,34px);line-height:1.15;margin:52px 0 12px}
+  .tldr{border:1px solid var(--line);border-left:3px solid var(--cobalt);border-radius:4px;padding:18px 20px;margin:0 0 8px}
+  .tldr ol{margin:0;padding-left:20px}
+  .tldr li{margin:0 0 8px}
+  table{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0 6px;font-variant-numeric:tabular-nums}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-weight:600;font-size:13.5px;color:var(--ink-2)}
+  td.num,th.num{text-align:right}
+  .scroll{overflow-x:auto}
+  .bars{margin:18px 0}
+  .bar{display:grid;grid-template-columns:130px 1fr 56px;gap:10px;align-items:center;font-size:15px;margin:0 0 8px}
+  .bar .track{height:14px;background:color-mix(in srgb,var(--line) 55%,transparent);border-radius:2px;position:relative}
+  .bar .fill{position:absolute;inset:0 auto 0 0;background:var(--cobalt);border-radius:2px}
+  .bar .chance{position:absolute;top:-3px;bottom:-3px;left:0;border-left:1px dashed var(--ink-2)}
+  .bar span.v{text-align:right;font-variant-numeric:tabular-nums}
+  .note{font-size:14px;color:var(--ink-2)}
+  .ex{border:1px solid var(--line);border-radius:4px;padding:14px 16px;margin:14px 0;font-size:15.5px}
+  .ex mark{background:var(--mark);border-bottom:2px solid var(--flag);color:inherit;padding:0 2px}
+  .ex .s{font-size:13.5px;color:var(--ink-2);margin-top:8px}
+  pre{background:color-mix(in srgb,var(--line) 35%,transparent);padding:14px 16px;border-radius:4px;overflow-x:auto;font-size:14px;line-height:1.5}
+  .cta{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;margin:56px 0 0}
+  .cta p{margin:0 0 10px}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2)}
+  footer span{display:inline-block;margin-right:18px}
+  @media(max-width:520px){.bar{grid-template-columns:96px 1fr 48px;font-size:14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <a class="back" href="/">← protforge.com</a>
+  </header>
+
+  <h1>Cheap hallucination checks catch most errors, and half of your good answers too</h1>
+  <p class="meta">ProtForge research · 29 October 2026 · code and data below</p>
+
+  <p>Most teams with a RAG product reach for a cheap automatic check before they reach for a human review: does the answer use words the sources don't contain, does a small entailment model agree with it, do the numbers match. We measured how far those checks get on real model output, using 900 answers that people had already labelled sentence by sentence.</p>
+
+  <div class="tldr">
+    <ol>
+      <li><b>A word-overlap check beat a neural entailment model.</b> Counting content words that never appear in the sources reached an AUROC of 0.78; a DeBERTa NLI cross-encoder reached 0.72.</li>
+      <li><b>At useful recall, every cheap detector is noisy.</b> Tuned to catch about 85% of hallucinated answers, the best one also flags about half of the correct ones. Roughly one alarm in two is false.</li>
+      <li><b>What works depends on the task and the model.</b> On data-to-text the NLI model is at chance (0.50). On the weakest generator it was the best detector; on GPT-4 it was the worst.</li>
+    </ol>
+  </div>
+
+  <h2>Setup</h2>
+  <p><a href="https://github.com/ParticleMedia/RAGTruth">RAGTruth</a> (Niu et al., ACL 2024, MIT licence) contains about 18,000 answers from six LLMs to retrieval-grounded prompts in three tasks: question answering, summarisation and data-to-text writing, with human-annotated hallucination spans. We call an answer hallucinated if it has at least one annotated span.</p>
+  <p>We tested three detectors that run on a CPU with no API calls:</p>
+  <ul>
+    <li><b>Lexical:</b> share of content words and numbers in the answer that do not occur in the sources.</li>
+    <li><b>Numeric:</b> share of numbers and dates in the answer, after normalising formats (1,000 / 1000 / 1k), that do not occur in the sources.</li>
+    <li><b>NLI:</b> each answer sentence is checked by <code>cross-encoder/nli-deberta-v3-small</code> against its three closest source sentences and their concatenation; the answer scores as its least-supported sentence.</li>
+  </ul>
+  <p>Plus a logistic-regression ensemble of the three. Thresholds and ensemble weights were fit on 300 training answers and frozen; results are on 900 test answers stratified by task and model (150 per model, 300 per task). The lexical and numeric detectors were also run on the full 2,700-answer test split, with the same result (lexical AUROC 0.785).</p>
+
+  <h2>Results</h2>
+  <p class="note">AUROC: probability that a random hallucinated answer scores higher than a random clean one. 0.5 is chance (dashed line), 1.0 is perfect.</p>
+  <div class="bars" role="img" aria-label="AUROC by detector: lexical 0.78, ensemble 0.77, NLI 0.72, numeric 0.54">
+    <div class="bar"><span>Lexical</span><div class="track"><div class="fill" style="width:77.8%"></div><div class="chance" style="left:50%"></div></div><span class="v">0.78</span></div>
+    <div class="bar"><span>Ensemble</span><div class="track"><div class="fill" style="width:76.6%"></div><div class="chance" style="left:50%"></div></div><span class="v">0.77</span></div>
+    <div class="bar"><span>NLI</span><div class="track"><div class="fill" style="width:71.6%"></div><div class="chance" style="left:50%"></div></div><span class="v">0.72</span></div>
+    <div class="bar"><span>Numeric</span><div class="track"><div class="fill" style="width:53.5%"></div><div class="chance" style="left:50%"></div></div><span class="v">0.54</span></div>
+  </div>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Detector</th><th class="num">AUROC (95% CI)</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
+    <tbody>
+      <tr><td>Lexical</td><td class="num">0.78 (0.75–0.81)</td><td class="num">0.48</td><td class="num">0.86</td><td class="num">0.61</td></tr>
+      <tr><td>Ensemble</td><td class="num">0.77 (0.74–0.80)</td><td class="num">0.45</td><td class="num">0.93</td><td class="num">0.61</td></tr>
+      <tr><td>NLI</td><td class="num">0.72 (0.68–0.75)</td><td class="num">0.48</td><td class="num">0.84</td><td class="num">0.61</td></tr>
+      <tr><td>Numeric</td><td class="num">0.54 (0.50–0.57)</td><td class="num">0.35</td><td class="num">1.00</td><td class="num">0.52</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">n = 900 test answers, 35% hallucinated. Precision, recall and F1 at the threshold tuned on the training sample. The numeric detector's best threshold flags everything, so its recall of 1.00 means nothing.</p>
+
+  <h3>By task</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Task</th><th class="num">Hallucinated</th><th class="num">Lexical</th><th class="num">NLI</th><th class="num">Ensemble</th></tr></thead>
+    <tbody>
+      <tr><td>Question answering</td><td class="num">20%</td><td class="num">0.71</td><td class="num">0.71</td><td class="num">0.74</td></tr>
+      <tr><td>Summarisation</td><td class="num">20%</td><td class="num">0.62</td><td class="num">0.63</td><td class="num">0.58</td></tr>
+      <tr><td>Data-to-text</td><td class="num">66%</td><td class="num">0.66</td><td class="num">0.50</td><td class="num">0.66</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">AUROC within each task (300 answers each). Pooled AUROC is higher than any single task's because the detectors partly pick up the task itself, and tasks differ a lot in how often models hallucinate.</p>
+
+  <h3>By generating model</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Model</th><th class="num">Hallucinated</th><th class="num">Lexical</th><th class="num">NLI</th></tr></thead>
+    <tbody>
+      <tr><td>GPT-4 (0613)</td><td class="num">10%</td><td class="num">0.81</td><td class="num">0.69</td></tr>
+      <tr><td>GPT-3.5 Turbo (0613)</td><td class="num">15%</td><td class="num">0.77</td><td class="num">0.74</td></tr>
+      <tr><td>Llama 2 70B chat</td><td class="num">36%</td><td class="num">0.80</td><td class="num">0.70</td></tr>
+      <tr><td>Llama 2 13B chat</td><td class="num">46%</td><td class="num">0.85</td><td class="num">0.73</td></tr>
+      <tr><td>Llama 2 7B chat</td><td class="num">49%</td><td class="num">0.73</td><td class="num">0.66</td></tr>
+      <tr><td>Mistral 7B instruct</td><td class="num">56%</td><td class="num">0.69</td><td class="num">0.81</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">150 answers per model. The confidence intervals here are wide; read the pattern, not the second decimal.</p>
+
+  <h2>What each detector misses</h2>
+  <div class="ex">
+    “…the implant holds promise for treating a broad range of peritoneal cancers. <mark>The first clinical trial focusing on recurrent ovarian cancer is currently underway.</mark>”
+    <div class="s">Summary, Mistral 7B. Annotated as a conflict with the source. Almost every word is in the source, so the lexical score is low (0.10); NLI flags it (0.9997).</div>
+  </div>
+  <div class="ex">
+    “The two-kilometer run down the Las Vegas Strip will make it the <mark>longest F1 circuit ever built</mark>.”
+    <div class="s">Summary, Mistral 7B. Unsupported claim. Lexical misses it (0.18); NLI flags it.</div>
+  </div>
+  <div class="ex">
+    “The lease agreement outlines the terms and conditions of the arrangement, including the <mark>duration of the lease, payment amounts, and any responsibilities and obligations of both parties</mark>.”
+    <div class="s">QA, Llama 2 70B. Plausible boilerplate the sources never say. NLI finds it vaguely entailed and lets it through; the new vocabulary trips the lexical check (0.44).</div>
+  </div>
+
+  <h2>What this means if you ship a RAG product</h2>
+  <p>A cheap detector is a useful triage signal, not a quality gate. If you block or rewrite every flagged answer, you will degrade about half of your correct ones. If you only log the flags, they are a reasonable way to decide which answers a person should look at first.</p>
+  <p>The detectors also disagree in ways that depend on your task and your model, and the ranking flips between them. Neither the public leaderboard nor this page tells you which check works on your traffic. The only reliable way to know is to label a few hundred of your own answers and measure, which is a week of work, not a quarter.</p>
+  <p>Two things we did not test, deliberately: LLM-as-judge detectors (more accurate, but they cost per call and have their own failure modes; the code includes the interface) and fine-tuned detectors trained on RAGTruth itself, which would flatter the numbers on this benchmark.</p>
+
+  <h2>Code and reproduction</h2>
+  <p><a href="https://github.com/protforge-ai/groundcheck">github.com/protforge-ai/groundcheck</a> (MIT; also as <a href="groundcheck-0.1.0.zip">a zip</a>): the detectors, a CLI that scores one answer against its sources sentence by sentence, the benchmark, per-answer test scores and all metrics.</p>
+<pre>pip install -e .
+groundcheck score --source source.txt --response answer.txt --detector nli
+groundcheck bench   # downloads RAGTruth, reproduces this page</pre>
+  <p class="note">The full run took 2.5 hours on a laptop CPU. Limitations: English only; RAGTruth's domains and 2023-era models; answer-level labels (we ignore span positions); a 900-answer test sample for the NLI rows.</p>
+
+  <h2>Citation</h2>
+  <p class="note">Niu et al. (2024). RAGTruth: A Hallucination Corpus for Developing Trustworthy Retrieval-Augmented Language Models. ACL 2024. <a href="https://arxiv.org/abs/2401.00396">arXiv:2401.00396</a>.</p>
+
+  <div class="cta">
+    <p><b>Want your own number?</b> We run this measurement on your product in one week, for a fixed $1,500. You share 100–200 real queries with the documents behind them. You get back your hallucination rate by query type, the ten worst failures with their causes, and the evaluation harness in your repository so it keeps running in CI.</p>
+    <p><a href="mailto:hello@protforge.com?subject=Evaluation%20sprint">hello@protforge.com</a></p>
+  </div>
+
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, Spain</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Legal</a></span>
+  </footer>
+</div>
+</body>
+</html>

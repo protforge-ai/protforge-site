@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diagnóstico de la Ley de IA europea — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/ley-ia">
+<meta name="description" content="Diagnóstico de cumplimiento del Reglamento europeo de IA (AI Act, Reglamento (UE) 2024/1689) para empresas que usan o desarrollan sistemas de IA. Inventario, clasificación de riesgo, obligaciones y plan de acción en dos semanas por 4.900 € + IVA. ProtForge, Barcelona.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Diagnóstico de la Ley de IA europea — ProtForge">
+<meta property="og:description" content="Qué sistemas de IA tiene su empresa, en qué categoría de riesgo caen y qué le toca hacer. Dos semanas, precio cerrado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#que">Qué incluye</a>
+      <a href="#como">Cómo trabajamos</a>
+      <a href="#quien">Quién</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/" hreflang="en">English</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>¿Qué le exige la Ley de IA a su empresa?</h1>
+    <p class="lede">El Reglamento europeo de Inteligencia Artificial (Reglamento (UE) 2024/1689) ya se aplica por fases. La mayoría de empresas no sabe cuántos sistemas de IA usa, en qué categoría de riesgo cae cada uno ni qué obligaciones tiene como proveedor o como responsable del despliegue. En dos semanas se lo dejamos claro y por escrito.</p>
+    <a class="cta" href="#contacto">Pedir un diagnóstico</a>
+    <a class="cta secondary" href="#que">Ver qué incluye</a>
+  </div>
+
+  <section id="que">
+    <h2>Qué incluye el diagnóstico</h2>
+    <p class="intro">Un trabajo técnico, no una plantilla. Revisamos los sistemas que tiene en producción o en compra, cómo están construidos y qué datos usan, y lo traducimos a obligaciones concretas.</p>
+    <div class="services">
+      <div class="service">
+        <h3>Inventario de sistemas de IA</h3>
+        <div>
+          <p>Todo lo que en su empresa cuenta como «sistema de IA» según el artículo 3: modelos propios, herramientas de terceros, asistentes con modelos de lenguaje y funciones de IA dentro del software que ya paga.</p>
+          <ul>
+            <li>Rol de la empresa en cada caso: proveedor, responsable del despliegue, importador o distribuidor</li>
+            <li>Uso de modelos de propósito general y de qué proveedor</li>
+          </ul>
+        </div>
+        <div class="terms"><b>Entregable</b>Inventario en hoja de cálculo, mantenible por su equipo.</div>
+      </div>
+      <div class="service">
+        <h3>Clasificación de riesgo</h3>
+        <div>
+          <p>Para cada sistema: práctica prohibida (artículo 5), alto riesgo (anexos I y III, con la excepción del artículo 6.3 cuando aplica), obligación de transparencia (artículo 50) o riesgo mínimo. Con la justificación por escrito, que es lo que se pide si un supervisor pregunta.</p>
+          <ul>
+            <li>Atención especial a usos sensibles: empleo y recursos humanos, crédito y seguros, salud, educación, servicios públicos</li>
+          </ul>
+        </div>
+        <div class="terms"><b>Entregable</b>Ficha por sistema con su categoría y el motivo.</div>
+      </div>
+      <div class="service">
+        <h3>Obligaciones y plan de acción</h3>
+        <div>
+          <p>Qué le toca hacer y cuándo: alfabetización en IA del personal (artículo 4), gestión de riesgos, calidad de datos, documentación técnica, registros, supervisión humana, información a usuarios y evaluación de impacto en derechos fundamentales cuando corresponda.</p>
+          <ul>
+            <li>Priorizado por fecha de aplicación y por riesgo real, no por volumen de papel</li>
+            <li>Con la evaluación técnica que muchas obligaciones exigen: precisión, robustez y errores del modelo medidos sobre sus propios datos</li>
+          </ul>
+        </div>
+        <div class="terms"><b>Entregable</b>Informe y sesión de presentación con dirección.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <h2>Cómo trabajamos</h2>
+    <p class="intro">Dos semanas, en remoto o con una visita, a precio cerrado: <b>4.900 € + IVA</b> para hasta cinco sistemas de IA. Para el sector público encaja como contrato menor. Tras una primera llamada de 30 minutos le confirmamos alcance y fechas.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Lo que hacemos</h3></div>
+        <div><p>La parte técnica: entender cómo funciona cada sistema, medir dónde falla y documentarlo en el lenguaje del Reglamento. Es la parte que un despacho no puede hacer sin un ingeniero, y la que suele faltar en los planes de cumplimiento.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Lo que no hacemos</h3></div>
+        <div><p>No damos asesoramiento jurídico ni firmamos dictámenes. Si tiene asesor legal, trabajamos con él; si no, se lo indicamos en el informe cada vez que un punto necesite criterio jurídico.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Herramienta propia</h3></div>
+        <div>
+          <p>Usamos Annexa, nuestra herramienta de clasificación de riesgo y análisis de obligaciones, que acelera el inventario y deja trazado cada criterio aplicado.</p>
+          <div class="proof"><b>Prueba.</b> Annexa es un producto propio en producción. También publicamos investigación sobre evaluación de modelos de lenguaje: <a href="/research/hallucination-detectors">comparativa de detectores de alucinaciones</a>.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quien">
+    <h2>Quién lo hace</h2>
+    <div class="about">
+      <div>
+        <p>ProtForge es una práctica independiente de ingeniería y evaluación de IA con sede en Barcelona, dirigida por <b>Guillermo Llopis</b>, investigador doctoral en detección de alucinaciones en modelos de lenguaje y CTO de dos startups. Ha construido plataformas de IA en producción en entornos regulados, donde cada cifra generada tenía que poder trazarse hasta su documento de origen.</p>
+        <p>Por eso nuestro enfoque del cumplimiento empieza por medir: muchas obligaciones del Reglamento, como la precisión, la robustez o la supervisión humana, solo se pueden demostrar evaluando el sistema real.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Para quién</dt><dd>Empresas y entidades que usan o desarrollan IA: pymes, mutuas, aseguradoras, salud, sector público</dd></div>
+        <div><dt>Precio</dt><dd>4.900 € + IVA, hasta cinco sistemas de IA</dd></div>
+        <div><dt>Idiomas</dt><dd>Español, catalán, inglés</dd></div>
+        <div><dt>Ubicación</dt><dd>Barcelona. Trabajo en remoto en toda España.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Cuéntenos qué IA usa su empresa</h2>
+    <p>Un par de líneas sobre su empresa y los sistemas que le preocupan. Le contestamos en un día laborable. Precio cerrado de 4.900 € + IVA; si su caso tiene más de cinco sistemas, se lo decimos antes de empezar.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Diagn%C3%B3stico%20Ley%20de%20IA">hello@protforge.com</a>
+    <p>Aceptamos pocos encargos a la vez para que cada uno tenga atención senior.</p>
+  </section>
+
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+  </footer>
+</div>
+</body>
+</html>

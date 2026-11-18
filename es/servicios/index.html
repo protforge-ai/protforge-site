@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios de IA para empresas — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/servicios">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/servicios">
+<link rel="alternate" hreflang="en" href="https://protforge.com/en/services">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/en/services">
+<meta name="description" content="Servicios de ProtForge: visibilidad en IA (GEO/SEO), automatización con IA, desarrollo de software y MVPs, evaluación de LLMs, diagnóstico de la Ley de IA, responsable de IA fraccional y formación. Precios desde 1.200 €.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Servicios de IA para empresas — ProtForge">
+<meta property="og:description" content="Visibilidad en IA, automatización, desarrollo, evaluación de LLMs, Ley de IA, IA fraccional y formación. Precios cerrados.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/servicios">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://protforge.com/#org",
+  "name": "ProtForge",
+  "legalName": "PROTFORGE SL",
+  "url": "https://protforge.com/",
+  "email": "hello@protforge.com",
+  "founder": {
+    "@type": "Person",
+    "name": "Guillermo Llopis",
+    "jobTitle": "AI scientist"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Barcelona",
+    "addressCountry": "ES"
+  },
+  "areaServed": [
+    "ES",
+    "US",
+    "EU"
+  ],
+  "knowsLanguage": [
+    "es",
+    "en",
+    "ca"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Servicios de ProtForge",
+  "description": "Servicios de ProtForge: visibilidad en IA (GEO/SEO), automatización con IA, desarrollo de software y MVPs, evaluación de LLMs, diagnóstico de la Ley de IA, responsable de IA fraccional y formación. Precios desde 1.200 €.",
+  "url": "https://protforge.com/es/servicios",
+  "inLanguage": "es",
+  "provider": {
+    "@id": "https://protforge.com/#org"
+  },
+  "areaServed": [
+    "ES",
+    "US",
+    "EU"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicios de ProtForge",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "price": "1200",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Visibilidad en IA (GEO y SEO)",
+          "description": "Medimos si ChatGPT, Claude y Perplexity te recomiendan y arreglamos lo que lo impide.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "3500",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Automatización con IA para empresas",
+          "description": "Asistentes sobre tus documentos, automatización de correos, facturas y PDFs, agentes internos. Alcance cerrado, de 2 a 4 semanas.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "6000",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Desarrollo de software y MVPs",
+          "description": "Webs, apps, SaaS, integraciones y APIs, de la idea a producción.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "3500",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Evaluación de LLMs y auditoría de alucinaciones",
+          "description": "Dónde se inventa datos tu modelo, con qué frecuencia y qué hacer. Conjunto de evaluación hecho con tu propio tráfico.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "4900",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Diagnóstico Ley de IA",
+          "description": "Inventario de sistemas, clasificación de riesgo y plan de obligaciones en dos semanas.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "4000",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Responsable de IA fraccional",
+          "description": "Un día o dos por semana dentro de tu equipo, con criterio técnico senior.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "1500",
+        "priceCurrency": "EUR",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Formación en IA para equipos",
+          "description": "Talleres de media jornada o de un día, con casos de tu empresa.",
+          "provider": {
+            "@id": "https://protforge.com/#org"
+          }
+        }
+      }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Servicios de ProtForge",
+  "url": "https://protforge.com/es/servicios",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "price": "1200",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Visibilidad en IA (GEO y SEO)",
+        "description": "Medimos si ChatGPT, Claude y Perplexity te recomiendan y arreglamos lo que lo impide.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "3500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Automatización con IA para empresas",
+        "description": "Asistentes sobre tus documentos, automatización de correos, facturas y PDFs, agentes internos. Alcance cerrado, de 2 a 4 semanas.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "6000",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Desarrollo de software y MVPs",
+        "description": "Webs, apps, SaaS, integraciones y APIs, de la idea a producción.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "3500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Evaluación de LLMs y auditoría de alucinaciones",
+        "description": "Dónde se inventa datos tu modelo, con qué frecuencia y qué hacer. Conjunto de evaluación hecho con tu propio tráfico.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "4900",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Diagnóstico Ley de IA",
+        "description": "Inventario de sistemas, clasificación de riesgo y plan de obligaciones en dos semanas.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "4000",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Responsable de IA fraccional",
+        "description": "Un día o dos por semana dentro de tu equipo, con criterio técnico senior.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "1500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Formación en IA para equipos",
+        "description": "Talleres de media jornada o de un día, con casos de tu empresa.",
+        "provider": {
+          "@id": "https://protforge.com/#org"
+        }
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#servicios">Servicios</a>
+      <a href="#por-que">Por qué ProtForge</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/en/services" hreflang="en">English</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>IA que se puede medir, a precio cerrado</h1>
+    <p class="lede">ProtForge es una consultora de IA de una sola persona, en Barcelona: Guillermo Llopis, científico de IA. Trabajamos con empresas que quieren resultados concretos con IA, desde que las recomiende ChatGPT hasta automatizar el papeleo o cumplir la Ley de IA.</p>
+    <a class="cta" href="#servicios">Ver servicios</a>
+    <a class="cta secondary" href="#contacto">Contactar</a>
+  </div>
+
+  <section id="servicios">
+    <h2>Qué hacemos</h2>
+    <p class="intro">Precios de partida. Tras una llamada de 30 minutos te damos alcance y precio cerrado.</p>
+    <div class="cards">
+      <div class="card featured">
+        <h3>Visibilidad en IA (GEO y SEO)</h3>
+        <p>Medimos si ChatGPT, Claude y Perplexity te recomiendan y arreglamos lo que lo impide.</p>
+        <div class="price"><small>desde</small> 1.200 € <small>+ IVA</small></div>
+        <a class="more" href="/es/visibilidad-ia">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Automatización con IA para empresas</h3>
+        <p>Asistentes sobre tus documentos, automatización de correos, facturas y PDFs, agentes internos. Alcance cerrado, de 2 a 4 semanas.</p>
+        <div class="price"><small>desde</small> 3.500 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Automatizaci%C3%B3n%20con%20IA">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Desarrollo de software y MVPs</h3>
+        <p>Webs, apps, SaaS, integraciones y APIs, de la idea a producción.</p>
+        <div class="price"><small>desde</small> 6.000 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Desarrollo%20de%20software">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Evaluación de LLMs y auditoría de alucinaciones</h3>
+        <p>Dónde se inventa datos tu modelo, con qué frecuencia y qué hacer. Conjunto de evaluación hecho con tu propio tráfico.</p>
+        <div class="price"><small>desde</small> 3.500 €</div>
+        <a class="more" href="/#services">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Diagnóstico Ley de IA</h3>
+        <p>Inventario de sistemas, clasificación de riesgo y plan de obligaciones en dos semanas.</p>
+        <div class="price">4.900 € <small>+ IVA</small></div>
+        <a class="more" href="/es/ley-ia">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Responsable de IA fraccional</h3>
+        <p>Un día o dos por semana dentro de tu equipo, con criterio técnico senior.</p>
+        <div class="price">4.000 €<small>/mes</small></div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Responsable%20de%20IA%20fraccional">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Formación en IA para equipos</h3>
+        <p>Talleres de media jornada o de un día, con casos de tu empresa.</p>
+        <div class="price"><small>desde</small> 1.500 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Formaci%C3%B3n%20en%20IA">Consultar →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="por-que" class="why">
+    <h2>Por qué ProtForge</h2>
+    <div class="about">
+      <div>
+        <p>Soy investigador de IA: mi doctorado trata sobre detección de alucinaciones en modelos de lenguaje. Por eso lo primero que hacemos es medir, y lo último es prometer.</p>
+        <p>Precios cerrados antes de empezar, plazos cortos y una sola persona responsable de tu proyecto de principio a fin.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Enfoque</dt><dd>Medir antes y después de cada cambio</dd></div>
+        <div><dt>Precio</dt><dd>Cerrado, sin horas ocultas</dd></div>
+        <div><dt>Plazos</dt><dd>De 5 días a 4 semanas según el servicio</dd></div>
+        <div><dt>Idiomas</dt><dd>Español, catalán, inglés</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Cuéntanos qué quieres conseguir</h2>
+    <p>Un par de líneas sobre tu empresa y lo que tienes en mente. Te contestamos en un día laborable.</p>
+    <a class="mail" href="mailto:hello@protforge.com">hello@protforge.com</a>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia">Ley de IA</a></span>
+  </footer>
+</div>
+</body>
+</html>
