@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU AI Act for US companies: what applies if you sell AI into Europe — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/en/eu-ai-act-for-us-companies/">
+<link rel="alternate" hreflang="en" href="https://protforge.com/en/eu-ai-act-for-us-companies/">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/en/eu-ai-act-for-us-companies/">
+<meta name="description" content="EU AI Act for US companies: what applies if you sell AI into Europe. Scope, roles, risk tiers, dates, and a remote scoping review for $5,500, 2 weeks.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="EU AI Act for US companies: what applies if you sell AI into Europe — ProtForge">
+<meta property="og:description" content="Scope, roles, risk tiers, dates and penalties of the EU AI Act for US SaaS and AI companies, plus a fixed-price remote scoping review for $5,500.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/en/eu-ai-act-for-us-companies/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+
+  .aside a{color:var(--cobalt)}
+  .crumbs{font-size:14.5px;color:var(--ink-2);margin:0 0 18px}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table.prices{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+  table.prices th,table.prices td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.prices th{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+  table.prices td:nth-child(3){white-space:nowrap;font-weight:600}
+  table.prices td small{display:block;color:var(--ink-2);font-weight:400;font-size:14.5px}
+  .branch{margin:10px 0 0;padding:0;list-style:none}
+  .branch li{margin:6px 0;padding-left:0;color:var(--ink-2)}
+  .branch li b{color:var(--ink)}
+  .plain{margin:12px 0 0;padding-left:20px;color:var(--ink-2);max-width:62ch}
+  .plain li{margin:6px 0}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "EU AI Act scoping review for US companies",
+  "serviceType": "EU AI Act applicability and obligations review",
+  "description": "A remote review of up to five AI systems against Regulation (EU) 2024/1689: whether it applies to you, your role, risk tier and the obligations that follow, with a prioritised plan. Fixed price $5,500, two weeks.",
+  "url": "https://protforge.com/en/eu-ai-act-for-us-companies/",
+  "inLanguage": "en",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://protforge.com/#org",
+    "name": "ProtForge",
+    "url": "https://protforge.com/",
+    "email": "hello@protforge.com"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "EU AI Act scoping review",
+    "price": "5500",
+    "priceCurrency": "USD",
+    "description": "Inventory and classification of up to five AI systems, role mapping, written reasoning and a prioritised obligations plan. Two weeks, fixed price."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does the EU AI Act apply to a US company with no EU office?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It can. Article 2 applies to providers that place AI systems or general-purpose AI models on the EU market, or put them into service in the EU, wherever they are established, and to providers and deployers in a third country where the output of the system is used in the Union. Having no EU entity does not take you out of scope; whether you are in scope depends on what the system does and where it is offered or used."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need an EU authorised representative?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Providers established outside the EU of high-risk AI systems must appoint an authorised representative in the Union before making the system available there (Article 22). Providers of general-purpose AI models also have this requirement (Article 54), with some exceptions such as certain open-source models. If none of your systems is high-risk or a general-purpose model, the requirement does not apply to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is our SaaS chatbot high-risk?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually not. A customer-facing chatbot normally falls under the transparency obligations of Article 50: people must be told they are interacting with an AI system unless it is obvious. It becomes high-risk only if its use is listed in Annex III, for example evaluating job candidates or creditworthiness. The classification follows the use, not the technology."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "We fine-tune an open model. Does that make us a GPAI provider?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not automatically. The obligations for providers of general-purpose AI models apply to whoever places the model on the market, and a downstream party that modifies a model becomes a provider only if the modification is substantial. The Commission has published guidance on this, so check it against what you actually do. Building a product on top of someone else's model usually makes you a provider of an AI system, not of the model."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When do the obligations apply?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The prohibitions and the AI literacy duty apply from 2 February 2025, and the obligations for general-purpose AI models from 2 August 2025. The timeline for high-risk systems has been the subject of EU simplification proposals, the so-called Digital Omnibus, so verify the current dates before you plan. We do not state a high-risk date here on purpose."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the penalties?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Under Article 99, violations of the prohibited practices can lead to fines of up to 35 million euros or 7 percent of worldwide annual turnover, whichever is higher; for SMEs including startups, whichever is lower. Other infringements have lower ceilings. Fines are set case by case and enforcement is by national authorities, and by the Commission for general-purpose models."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the scoping review legal advice?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is a technical and regulatory mapping of your systems against the Regulation: roles, risk tier and the obligations that follow, with the reasoning written down. If your lawyers need to sign off on a conclusion, we work with them."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Sections">
+      <a href="#scope">Does it apply</a>
+      <a href="#roles">Roles</a>
+      <a href="#tiers">Risk tiers</a>
+      <a href="#dates">Dates and fines</a>
+      <a href="#service">Scoping review</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>EU AI Act for US companies: what applies if you sell AI into Europe</h1>
+    <p class="lede">The EU AI Act, Regulation (EU) 2024/1689, does not stop at the EU border. If you are a US SaaS or AI company with European customers, parts of it may apply to you even without an office in Europe. This is a plain-language map of what to check first, and a fixed-price remote scoping review if you want it done: $5,500, two weeks, up to five AI systems.</p>
+    <a class="cta" href="mailto:hello@protforge.com?subject=EU%20AI%20Act%20scoping%20review">Book a scoping review</a>
+    <a class="cta secondary" href="#scope">Does it apply to us?</a>
+    <p class="aside">Updated: 21 Nov 2026. This is a practical guide, not legal advice.</p>
+  </div>
+
+  <section id="scope">
+    <h2>Does the Act apply to you?</h2>
+    <p class="intro">Article 2 sets an extraterritorial scope. The two cases that matter most for a US company:</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>You place an AI system or model on the EU market</h3></div>
+        <div><p>Providers that place AI systems on the market or put them into service in the Union, or place general-purpose AI models on the market, are covered wherever they are established. Selling or offering your product to customers in the EU is the typical trigger.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Your output is used in the EU</h3></div>
+        <div><p>Providers and deployers established or located in a third country are also covered where the output produced by the AI system is used in the Union. So an API or a service run from the US can be in scope if its results are used by people or companies in Europe.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>What is outside</h3></div>
+        <div><p>Systems that are not AI systems under the Article 3 definition, and uses outside the Union with no output used there, are not in scope. Scope is a question about each system and each use, not about your company as a whole.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles">
+    <h2>Which role are you playing?</h2>
+    <p class="intro">Obligations follow the role, and one company can hold several roles for different systems.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Provider</h3></div>
+        <div><p>Develops an AI system, or has one developed, and places it on the market or puts it into service under its own name or trademark. Providers carry most of the obligations. If you build a product on top of a third-party model, you are normally the provider of the AI system, not of the model.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Deployer</h3></div>
+        <div><p>Uses an AI system under its own authority in a professional context. Your EU customers will often be deployers of your product, and they will ask you for documentation and information in order to comply.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Importer and distributor</h3></div>
+        <div><p>An importer places on the EU market a system bearing the name of a non-EU provider; a distributor makes it available further down the chain. If you sell through resellers in the EU, they may take these roles and have their own duties.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Authorised representative</h3></div>
+        <div><p>Providers established outside the EU of high-risk AI systems must appoint an authorised representative in the Union before making the system available (Article 22). General-purpose model providers have a similar requirement under Article 54.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>When a role changes</h3></div>
+        <div><p>Under Article 25 a deployer or other party becomes the provider of a high-risk system if it puts its name or trademark on it, makes a substantial modification, or changes its intended purpose so that it becomes high-risk.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiers">
+    <h2>The risk tiers, in practice</h2>
+    <p class="intro">The category follows the use of the system, so the same model can sit in different tiers.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Prohibited practices (Article 5)</h3></div>
+        <div><p>Includes harmful manipulation, exploiting vulnerabilities, social scoring, emotion recognition in the workplace and in education (with limited exceptions), and untargeted scraping of facial images, among others. If a feature does one of these, it has to go.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>High-risk (Annex III and Annex I)</h3></div>
+        <div><p>Annex III lists areas such as employment and worker management, education, access to essential services including credit scoring, biometrics, and law enforcement. If you sell HR screening or credit tools, check this carefully. Article 6(3) allows some Annex III systems to document why they are not high-risk, but never where they profile natural persons.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Transparency (Article 50)</h3></div>
+        <div><p>Chatbots must tell people they are interacting with an AI system unless it is obvious. Providers of systems that generate synthetic audio, image, video or text must mark the output in a machine-readable format, and deepfakes must be disclosed. This is the tier most SaaS products meet first.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>General-purpose AI models</h3></div>
+        <div><p>If you train a model and release it, provider obligations for general-purpose models apply, including technical documentation and a copyright policy, with more for models with systemic risk. If you only fine-tune, you become a provider of the modified model only where the change is substantial; the Commission guidance sets out how to assess that. Most teams that call an API or lightly fine-tune are not GPAI providers.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Everything else</h3></div>
+        <div><p>Minimal risk systems have no specific obligations beyond AI literacy (Article 4), which applies to providers and deployers alike.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dates">
+    <h2>Dates and penalties</h2>
+    <p class="intro">Prohibitions and AI literacy have applied since 2 February 2025. Obligations for general-purpose AI models have applied since 2 August 2025.</p>
+    <p class="aside" style="margin-top:0">The timeline for high-risk systems has been the subject of EU simplification proposals, the so-called Digital Omnibus, so we do not give a specific high-risk date here: check the current text before you plan a roadmap. Classification is useful now regardless, because the tier does not change with the calendar.</p>
+    <p class="aside">Under Article 99, breaches of the prohibited practices can lead to fines of up to 35 million euros or 7 percent of worldwide annual turnover, whichever is higher. For SMEs, including startups, the lower of the two applies. Other infringements have lower ceilings, and fines are set case by case by the authorities.</p>
+  </section>
+
+  <section id="service">
+    <h2>A remote scoping review for US teams</h2>
+    <p class="intro">We map your systems against the Regulation and tell you what applies, in writing, so your team and your lawyers can act on it.</p>
+    <div class="steps">
+      <div class="step"><h3>Inventory and scope</h3><p>A 30-minute call and a short questionnaire. We list up to five AI systems, who uses them, where, and whether Article 2 reaches you.</p></div>
+      <div class="step"><h3>Roles and tiers</h3><p>For each system: provider or deployer, risk tier with the reasoning written down, and any authorised representative requirement.</p></div>
+      <div class="step"><h3>Obligations plan</h3><p>A prioritised plan of what to do, what to document and what to watch as the dates are clarified. It is delivered at the end of week two.</p></div>
+    </div>
+    <div class="plans">
+      <div class="card featured">
+        <h3>EU AI Act scoping review</h3>
+        <p>Remote, fixed price, two weeks, up to five AI systems. It is the US-dollar equivalent of our European diagnostic.</p>
+        <div class="price">$5,500</div>
+      </div>
+    </div>
+    <p class="aside">The Act expects accuracy and robustness for high-risk systems, and customers increasingly ask for evidence of it. Our <a href="/en/llm-evaluation-audit/">LLM evaluation audit</a>, from $4,000, produces that evidence by measuring hallucination rates and failures on your own traffic, and <a href="/en/rag-evaluation/">RAG evaluation</a> covers retrieval systems. The team comes from PhD-level research on LLM hallucination detection, and our <a href="/research/hallucination-detectors/">comparison of hallucination detectors</a> is public. We do not give legal advice; we work with your counsel.</p>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <details><summary>Does the EU AI Act apply to a US company with no EU office?</summary><p>It can. Article 2 applies to providers that place AI systems or general-purpose AI models on the EU market, or put them into service in the EU, wherever they are established, and to providers and deployers in a third country where the output of the system is used in the Union. Having no EU entity does not take you out of scope; whether you are in scope depends on what the system does and where it is offered or used.</p></details>
+    <details><summary>Do we need an EU authorised representative?</summary><p>Providers established outside the EU of high-risk AI systems must appoint an authorised representative in the Union before making the system available there (Article 22). Providers of general-purpose AI models also have this requirement (Article 54), with some exceptions such as certain open-source models. If none of your systems is high-risk or a general-purpose model, the requirement does not apply to you.</p></details>
+    <details><summary>Is our SaaS chatbot high-risk?</summary><p>Usually not. A customer-facing chatbot normally falls under the transparency obligations of Article 50: people must be told they are interacting with an AI system unless it is obvious. It becomes high-risk only if its use is listed in Annex III, for example evaluating job candidates or creditworthiness. The classification follows the use, not the technology.</p></details>
+    <details><summary>We fine-tune an open model. Does that make us a GPAI provider?</summary><p>Not automatically. The obligations for providers of general-purpose AI models apply to whoever places the model on the market, and a downstream party that modifies a model becomes a provider only if the modification is substantial. The Commission has published guidance on this, so check it against what you actually do. Building a product on top of someone else's model usually makes you a provider of an AI system, not of the model.</p></details>
+    <details><summary>When do the obligations apply?</summary><p>The prohibitions and the AI literacy duty apply from 2 February 2025, and the obligations for general-purpose AI models from 2 August 2025. The timeline for high-risk systems has been the subject of EU simplification proposals, the so-called Digital Omnibus, so verify the current dates before you plan. We do not state a high-risk date here on purpose.</p></details>
+    <details><summary>What are the penalties?</summary><p>Under Article 99, violations of the prohibited practices can lead to fines of up to 35 million euros or 7 percent of worldwide annual turnover, whichever is higher; for SMEs including startups, whichever is lower. Other infringements have lower ceilings. Fines are set case by case and enforcement is by national authorities, and by the Commission for general-purpose models.</p></details>
+    <details><summary>Is the scoping review legal advice?</summary><p>No. It is a technical and regulatory mapping of your systems against the Regulation: roles, risk tier and the obligations that follow, with the reasoning written down. If your lawyers need to sign off on a conclusion, we work with them.</p></details>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Tell us what you sell into Europe</h2>
+    <p>A few lines on your product, your EU customers and what is on your roadmap. We reply within one business day and propose a 30-minute call. We work remotely with US teams and overlap with US East Coast mornings.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=EU%20AI%20Act%20scoping%20review">hello@protforge.com</a>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, Spain</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal/">Legal</a></span>
+    <span><a href="/en/services/">Services</a></span>
+    <span><a href="/en/ai-visibility/">AI visibility</a></span>
+    <span><a href="/en/llm-evaluation-audit/">LLM evaluation</a></span>
+    <span><a href="/research/hallucination-detectors/">Hallucination detectors</a></span>
+  </footer>
+</div>
+</body>
+</html>

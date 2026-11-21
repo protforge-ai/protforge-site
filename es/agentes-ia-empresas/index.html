@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentes de IA para empresas: qué automatizar primero — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/agentes-ia-empresas/">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/agentes-ia-empresas/">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/es/agentes-ia-empresas/">
+<meta name="description" content="Agentes de IA para empresas: qué procesos automatizar primero, cuáles no, cómo medimos los errores. Primer agente a precio cerrado desde 3.500 €.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Agentes de IA para empresas: qué automatizar primero — ProtForge">
+<meta property="og:description" content="Cómo elegir el primer proceso que automatizar con IA, qué dejar para después y cómo medir los errores. Primer agente a precio cerrado desde 3.500 €.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/agentes-ia-empresas/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+
+  .aside a{color:var(--cobalt)}
+  .crumbs{font-size:14.5px;color:var(--ink-2);margin:0 0 18px}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table.prices{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+  table.prices th,table.prices td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.prices th{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+  table.prices td:nth-child(3){white-space:nowrap;font-weight:600}
+  table.prices td small{display:block;color:var(--ink-2);font-weight:400;font-size:14.5px}
+  .branch{margin:10px 0 0;padding:0;list-style:none}
+  .branch li{margin:6px 0;padding-left:0;color:var(--ink-2)}
+  .branch li b{color:var(--ink)}
+  .plain{margin:12px 0 0;padding-left:20px;color:var(--ink-2);max-width:62ch}
+  .plain li{margin:6px 0}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Agentes de IA y automatización de procesos para empresas",
+  "serviceType": "Automatización de procesos con IA",
+  "description": "Agentes de IA para empresas: qué procesos automatizar primero, cuáles no, cómo medimos los errores. Primer agente a precio cerrado desde 3.500 €.",
+  "url": "https://protforge.com/es/agentes-ia-empresas/",
+  "inLanguage": "es",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://protforge.com/#org",
+    "name": "ProtForge",
+    "url": "https://protforge.com"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "España"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "Primer agente de IA a precio cerrado",
+    "price": "3500",
+    "priceCurrency": "EUR",
+    "description": "Un proceso acotado automatizado con IA, con medición de errores sobre casos reales y revisión humana donde haga falta. De dos a cuatro semanas."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un agente de IA para una empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un primer agente acotado, como clasificar correos o extraer datos de facturas, empieza en 3.500 € con precio y alcance cerrados y un plazo de dos a cuatro semanas. Sube con el número de integraciones y con el nivel de fiabilidad que exija el proceso. Los costes de funcionamiento dependen del volumen y los medimos con tus datos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué proceso conviene automatizar primero?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uno que sea repetitivo, que maneje documentos o texto, que tenga una respuesta correcta clara y en el que una persona pueda revisar el resultado. Si además el volumen es alto y hoy lleva horas, mejor. Un proceso que ocurre una vez al mes o que depende de criterio muy personal no suele ser buen primer candidato."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Un agente de IA se equivoca?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, como cualquier persona que haga la tarea. Por eso medimos los errores con casos reales antes de ponerlo en marcha y diseñamos dónde entra la revisión humana. En muchos procesos la mejor solución es que el agente prepare el trabajo y una persona lo apruebe."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito cambiar mis programas actuales?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Normalmente no. El agente se conecta a lo que ya usas, como el correo, una carpeta de documentos, una hoja de cálculo, tu ERP o tu CRM, mediante sus interfaces. Lo que hay que revisar en cada caso es qué permite hacer cada herramienta, y se acuerda en el alcance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Y la privacidad de los datos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se decide al diseñar: dónde se procesan los datos, qué proveedor de modelos se usa y qué información se envía realmente. Hay opciones con alojamiento en la UE y con modelos que corres en tu infraestructura. Si tratas datos personales, tu responsable de protección de datos debe validar la solución."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre un chatbot y un agente?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un chatbot responde preguntas, normalmente sobre documentos. Un agente hace tareas en varios pasos usando herramientas: lee un correo, consulta un sistema, redacta una respuesta o rellena un registro. Si lo que necesitas es atender consultas, empieza por un chatbot con tus documentos."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#candidatos">Qué automatizar</a>
+      <a href="#no">Qué no</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#como">Cómo lo hacemos</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Agentes de IA para empresas: qué automatizar primero</h1>
+    <p class="lede">Casi toda empresa tiene tareas repetitivas con documentos y correos que se pueden automatizar con IA, pero no todas merecen hacerlo ni todas son buen punto de partida. Esta guía explica cómo elegir el primer proceso, qué dejar para más adelante y cómo medimos que el agente no se equivoca. Primer agente a precio cerrado desde 3.500 €.</p>
+    <a class="cta" href="mailto:hello@protforge.com?subject=Agente%20de%20IA%20para%20automatizar%20un%20proceso">Consultar mi proceso</a>
+    <a class="cta secondary" href="#candidatos">Qué automatizar primero</a>
+    <p class="aside">Actualizado: 21 de noviembre de 2026</p>
+  </div>
+
+  <section id="candidatos">
+    <h2>Un buen primer candidato cumple cuatro cosas</h2>
+    <p class="intro">Si un proceso las cumple todas, casi siempre merece la pena probarlo. Si falla en más de una, mejor otro.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Es repetitivo</h3></div>
+        <div><p>Se hace muchas veces con pocas variaciones: cada día, cada semana, con cada pedido o cada factura. La automatización se paga con el volumen, y un proceso que ocurre una vez al trimestre rara vez compensa.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Trabaja con documentos o texto</h3></div>
+        <div><p>Correos, PDF, facturas, albaranes, formularios, mensajes. Es donde los modelos de lenguaje aportan más, porque leen y redactan texto con mucha flexibilidad, algo que las reglas clásicas hacían mal.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Tiene una respuesta correcta clara</h3></div>
+        <div><p>Se puede decir si la salida está bien o mal: el importe de la factura es este, el correo es una queja y no una consulta. Si hay respuesta correcta, se puede medir el error y mejorar. Si depende del gusto de cada persona, no hay forma objetiva de saber si el agente funciona.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Una persona puede revisar</h3></div>
+        <div><p>Un fallo no causa un daño irreversible porque alguien revisa, al menos al principio, o porque se detecta pronto. El agente prepara y la persona aprueba. Con el tiempo, y con datos, se decide qué casos pueden pasar sin revisión.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="no">
+    <h2>Qué no automatizar todavía</h2>
+    <p class="intro">Aquí es donde se pierde más dinero.</p>
+    <ul class="plain">
+      <li><b>Decisiones con consecuencias graves sin supervisión</b>, como conceder o denegar un crédito, un despido o una prestación. Además de arriesgado, puede caer en la categoría de alto riesgo del Reglamento europeo de IA: mira nuestra <a href="/es/ley-ia/clasificacion-riesgo/">checklist para clasificar el riesgo</a>.</li>
+      <li><b>Procesos que nadie ha escrito.</b> Si el trabajo depende de lo que sabe una persona y no está documentado, el primer paso es documentarlo, con IA o sin ella.</li>
+      <li><b>Procesos con muy pocos casos</b>, donde construir y mantener el agente cuesta más que hacerlo a mano.</li>
+      <li><b>Cuando ya existe un producto que lo hace</b> y encaja con lo que necesitas. Comprarlo cuesta menos que desarrollarlo.</li>
+      <li><b>Procesos con datos desordenados</b>, duplicados o contradictorios. El agente los reproducirá con mucha seguridad.</li>
+    </ul>
+  </section>
+
+  <section id="ejemplos">
+    <h2>Ejemplos habituales</h2>
+    <p class="intro">Casos genéricos que suelen cumplir los cuatro criterios.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Clasificar y enrutar correos</h3></div>
+        <div><p>Leer los correos que llegan a un buzón compartido, etiquetarlos por tipo (consulta, incidencia, pedido, factura), asignarlos a la persona o el equipo adecuado y, si se quiere, preparar un borrador de respuesta para revisar.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Extraer datos de facturas, albaranes y PDF</h3></div>
+        <div><p>Leer documentos que llegan en formatos distintos, sacar los campos que importan (proveedor, fecha, importes, líneas) y dejarlos en tu hoja de cálculo o tu sistema de gestión. Los casos dudosos se marcan para revisión humana en lugar de adivinarse.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Responder consultas internas</h3></div>
+        <div><p>Un asistente para tu equipo sobre procedimientos, políticas, manuales o contratos, con citas a la fuente. Es el mismo enfoque que el <a href='/es/chatbot-ia-empresas/'>chatbot con tus documentos</a>, dirigido a empleados.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Preparar borradores</h3></div>
+        <div><p>Informes recurrentes, resúmenes de reuniones o de documentos largos, propuestas a partir de plantillas, respuestas a licitaciones o cuestionarios. El agente hace el primer borrador y una persona lo revisa y lo firma.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <h2>Cómo lo hacemos</h2>
+    <p class="intro">Un primer agente a precio cerrado, con el error medido antes de depender de él.</p>
+    <div class="steps">
+      <div class="step"><h3>Delimitamos un solo proceso</h3><p>En una llamada de 30 minutos elegimos el proceso que mejor cumple los cuatro criterios y escribimos el alcance: qué entra, qué sale, qué sistemas toca y cuándo interviene una persona. Una cosa bien hecha antes que cinco a medias.</p></div>
+      <div class="step"><h3>Medimos el error con casos reales</h3><p>Reunimos ejemplos reales del proceso con su resultado correcto y comprobamos cuántas veces acierta el agente y de qué tipo son los fallos. Según el coste de cada error, decidimos qué casos revisa una persona y cuáles pasan directos.</p></div>
+      <div class="step"><h3>Lo ponemos en marcha y lo dejamos documentado</h3><p>Entrega en dos a cuatro semanas, con documentación y las pruebas para que tu equipo pueda repetir la medición. Si quieres ampliarlo a otro proceso, lo presupuestamos aparte.</p></div>
+    </div>
+    <p class="aside">La medición de errores no es un trámite: nuestro equipo viene de una investigación doctoral sobre detección de alucinaciones en modelos de lenguaje y publica la herramienta de código abierto groundcheck y una <a href="/research/hallucination-detectors/">comparativa de detectores de alucinaciones</a>. Si ya tienes un agente o un chatbot en marcha, la <a href="/es/auditoria-chatbot-ia/">auditoría de chatbots y agentes</a> mide su tasa de error con tus datos.</p>
+  </section>
+
+  <section id="precio">
+    <h2>Precio</h2>
+    <p class="intro">Alcance escrito antes de empezar, sin facturar por horas.</p>
+    <div class="plans">
+      <div class="card featured">
+        <h3>Primer agente de IA</h3>
+        <p>Un proceso acotado automatizado, con medición de errores sobre casos reales y revisión humana donde haga falta. De dos a cuatro semanas.</p>
+        <div class="price"><small>desde</small> 3.500 €</div>
+      </div>
+    </div>
+    <p class="aside">El precio final depende de las integraciones y de la fiabilidad que exija el proceso, y lo confirmamos antes de empezar. El coste de funcionamiento depende del volumen. Mira la <a href="/es/cuanto-cuesta-ia-empresa/">guía de precios de IA para empresas</a> y todos los <a href="/es/servicios/">servicios</a>.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto cuesta un agente de IA para una empresa?</summary><p>Un primer agente acotado, como clasificar correos o extraer datos de facturas, empieza en 3.500 € con precio y alcance cerrados y un plazo de dos a cuatro semanas. Sube con el número de integraciones y con el nivel de fiabilidad que exija el proceso. Los costes de funcionamiento dependen del volumen y los medimos con tus datos.</p></details>
+    <details><summary>¿Qué proceso conviene automatizar primero?</summary><p>Uno que sea repetitivo, que maneje documentos o texto, que tenga una respuesta correcta clara y en el que una persona pueda revisar el resultado. Si además el volumen es alto y hoy lleva horas, mejor. Un proceso que ocurre una vez al mes o que depende de criterio muy personal no suele ser buen primer candidato.</p></details>
+    <details><summary>¿Un agente de IA se equivoca?</summary><p>Sí, como cualquier persona que haga la tarea. Por eso medimos los errores con casos reales antes de ponerlo en marcha y diseñamos dónde entra la revisión humana. En muchos procesos la mejor solución es que el agente prepare el trabajo y una persona lo apruebe.</p></details>
+    <details><summary>¿Necesito cambiar mis programas actuales?</summary><p>Normalmente no. El agente se conecta a lo que ya usas, como el correo, una carpeta de documentos, una hoja de cálculo, tu ERP o tu CRM, mediante sus interfaces. Lo que hay que revisar en cada caso es qué permite hacer cada herramienta, y se acuerda en el alcance.</p></details>
+    <details><summary>¿Y la privacidad de los datos?</summary><p>Se decide al diseñar: dónde se procesan los datos, qué proveedor de modelos se usa y qué información se envía realmente. Hay opciones con alojamiento en la UE y con modelos que corres en tu infraestructura. Si tratas datos personales, tu responsable de protección de datos debe validar la solución.</p></details>
+    <details><summary>¿Qué diferencia hay entre un chatbot y un agente?</summary><p>Un chatbot responde preguntas, normalmente sobre documentos. Un agente hace tareas en varios pasos usando herramientas: lee un correo, consulta un sistema, redacta una respuesta o rellena un registro. Si lo que necesitas es atender consultas, empieza por un chatbot con tus documentos.</p></details>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Cuéntanos qué proceso quieres automatizar</h2>
+    <p>Dos líneas sobre la tarea, cuántas veces se repite y con qué herramientas se hace hoy. Te contestamos en un día laborable y te decimos con sinceridad si merece la pena.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Agente%20de%20IA%20para%20automatizar%20un%20proceso">hello@protforge.com</a>
+    <p>Aceptamos pocos encargos a la vez para que cada uno tenga atención directa.</p>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal/">Aviso legal</a></span>
+    <span><a href="/es/servicios/">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia/">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia/">Ley de IA</a></span>
+    <span><a href="/es/auditoria-chatbot-ia/">Auditoría de chatbots</a></span>
+    <span><a href="/es/cuanto-cuesta-ia-empresa/">Cuánto cuesta la IA</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -15,6 +15,9 @@
 - [Cuánto cuesta implantar IA en una empresa (ES)](https://protforge.com/es/cuanto-cuesta-ia-empresa/): price table for chatbots, automation, MVPs, training and fractional AI lead, 2026.
 - [Checklist de clasificación de riesgo, Ley de IA (ES)](https://protforge.com/es/ley-ia/clasificacion-riesgo/): free step-by-step EU AI Act risk classification (Art. 5, Annex I/III, Art. 6.3, Art. 50).
 - [Consultoría de IA en Barcelona](https://protforge.com/es/consultoria-ia-barcelona/) and [Valencia](https://protforge.com/es/consultoria-ia-valencia/): local pages for Catalonia and the Valencian Community.
+- [Chatbot con IA para empresas (ES)](https://protforge.com/es/chatbot-ia-empresas/): chatbots over company documents (RAG) with citations, human handover and hallucination measured before launch; from 3.500 EUR, 2-4 weeks.
+- [Agentes de IA para empresas (ES)](https://protforge.com/es/agentes-ia-empresas/): which processes to automate first with AI agents (email triage, invoice/PDF extraction, internal Q&A); fixed-price first agent from 3.500 EUR.
+- [EU AI Act for US companies](https://protforge.com/en/eu-ai-act-for-us-companies/): extraterritorial scope, provider/deployer roles, authorised representative, risk tiers; remote AI Act scoping review for US teams, $5,500 fixed, 2 weeks, up to 5 AI systems.
 - [LLM reliability audit](https://protforge.com/#services): hallucination and groundedness evaluation built from the client's own traffic, from 3.500 EUR.
 - AI automation for businesses (document assistants, email/invoice/PDF automation, internal agents): from 3.500 EUR, fixed scope, 2 to 4 weeks.
 - Software development and MVPs (web, apps, SaaS, integrations, APIs): from 6.000 EUR.
