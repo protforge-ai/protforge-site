@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consultoría de IA en Valencia — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/consultoria-ia-valencia">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/consultoria-ia-valencia">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/es/consultoria-ia-valencia">
+<meta name="description" content="Consultoría de IA para empresas de Valencia y la Comunitat Valenciana: visibilidad en IA desde 1.200 €, automatización desde 3.500 €. Precio cerrado.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Consultoría de IA en Valencia — ProtForge">
+<meta property="og:description" content="Consultoría de IA para empresas de Valencia y la Comunitat Valenciana: automatización, visibilidad en IA, evaluación de LLMs y Ley de IA. Precio cerrado.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/consultoria-ia-valencia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://protforge.com/es/consultoria-ia-valencia#service",
+  "name": "ProtForge",
+  "description": "Consultoría de inteligencia artificial para empresas de Valencia y la Comunitat Valenciana.",
+  "url": "https://protforge.com/es/consultoria-ia-valencia",
+  "email": "hello@protforge.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Valencia",
+    "addressCountry": "ES"
+  },
+  "areaServed": [
+    "Valencia",
+    "Comunitat Valenciana",
+    "España"
+  ],
+  "priceRange": "€€",
+  "knowsLanguage": [
+    "es",
+    "ca",
+    "en"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Dónde está ProtForge y cómo trabajáis con empresas de Valencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tenemos el domicilio social en Valencia y trabajamos con empresas de la Comunitat Valenciana en remoto y presencial cuando hace falta. El trabajo diario se hace desde Barcelona; nos desplazamos a Valencia para reuniones, talleres o para ver cómo se hace un proceso en la planta o en la oficina."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta una consultoría de IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Siempre con precio cerrado antes de empezar. La auditoría de visibilidad en IA son 1.200 € + IVA, la automatización con IA parte de 3.500 €, el desarrollo de software y MVPs de 6.000 €, el diagnóstico de la Ley de IA son 4.900 € + IVA, la formación para equipos parte de 1.500 € y el responsable de IA fraccional de 2.500 € al mes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo es la primera reunión?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Una llamada de 30 minutos por videollamada, o una visita si estamos por Valencia, en la que nos cuentas el problema y qué datos y herramientas tienes. Después te enviamos una propuesta de una página con alcance, plazo y precio cerrado. No hay compromiso."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede trabajar en valenciano?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Trabajamos en valenciano, castellano e inglés, y los entregables se redactan en el idioma que prefiera tu equipo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Tenéis experiencia en mi sector?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lo que ofrecemos es método, no un sector concreto: medir un proceso o un asistente con datos reales, automatizar lo que se repite y documentar lo que exige la normativa. Los casos de uso se parecen mucho entre industria, agroalimentación, logística o servicios, pero no publicamos nombres de clientes ni prometemos resultados que no podamos medir."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé que sabéis de lo que habláis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hacemos investigación de nivel doctoral sobre detección de alucinaciones en modelos de lenguaje y mantenemos el paquete de código abierto groundcheck, con una comparativa pública de detectores de alucinaciones. También publicamos el Índice de visibilidad en IA de pymes españolas 2026, con 29 pymes auditadas. Todo está en abierto para que lo revises."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#quien">Para quién</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#reunion">Primera reunión</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/es/servicios">Todos los servicios</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Consultoría de IA en Valencia</h1>
+    <p class="lede">Tenemos el domicilio social en Valencia y trabajamos con empresas de la Comunitat Valenciana en remoto y presencial cuando hace falta. ProtForge ayuda a industria, agroalimentación, logística, turismo, salud y pymes de servicios a automatizar trabajo con IA, medir si sus asistentes aciertan y cumplir la Ley de IA. Precio cerrado, desde 1.200 €.</p>
+    <a class="cta" href="mailto:hello@protforge.com?subject=Consultor%C3%ADa%20de%20IA%20en%20Valencia">Pedir una llamada de 30 minutos</a>
+    <a class="cta secondary" href="#servicios">Ver servicios y precios</a>
+    <p class="aside">Actualizado: 21 Nov 2026</p>
+  </div>
+
+  <section id="quien">
+    <h2>Empresas valencianas y IA</h2>
+    <p class="intro">La economía valenciana es de industria, campo, puerto y turismo. Ahí la IA rinde cuando se aplica a un proceso concreto, no cuando se compra como producto.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Industria y cerámica</h3></div>
+        <div><p>Fichas técnicas, pedidos, albaranes y control de calidad generan muchos documentos y correos. Es el terreno clásico de la automatización: extraer datos de PDFs, cruzarlos con el ERP y avisar solo cuando algo no cuadra.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Agroalimentación y logística portuaria</h3></div>
+        <div><p>Trazabilidad, certificados, facturas y comunicación con transportistas y clientes de varios países. Un asistente sobre vuestros documentos o una automatización de correos puede ahorrar horas cada semana, siempre con revisión humana donde importa.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Turismo y salud</h3></div>
+        <div><p>Atención al cliente y al paciente con asistentes que responden sobre información propia. Aquí lo primero es medir si el asistente acierta y si se inventa datos, y en el caso de salud, revisar qué exige la Ley de IA.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Pymes, startups y agencias</h3></div>
+        <div><p>Si vendes software o servicios digitales desde Valencia, podemos trabajar contigo como capacidad senior de IA en subcontrata, o ayudarte a medir el LLM que ya tienes en producción.</p></div>
+      </div>
+    </div>
+    <p class="aside">Sin pretender más de lo que somos: no tenemos una oficina abierta al público en Valencia ni listamos clientes de la zona. Si estás en Barcelona o Catalunya, mira <a href="/es/consultoria-ia-barcelona">consultoría de IA en Barcelona</a>.</p>
+  </section>
+
+  <section id="servicios">
+    <h2>Servicios y precios</h2>
+    <p class="intro">Precios de partida, con alcance y precio cerrado tras una llamada de 30 minutos. Todo el catálogo está en <a href="/es/servicios">servicios</a>.</p>
+    <div class="cards">
+      <div class="card featured">
+        <h3>Visibilidad en IA (GEO y SEO)</h3>
+        <p>Medimos si ChatGPT, Claude, Perplexity y Google AI Overviews te recomiendan, y corregimos lo que lo impide, incluido el SEO técnico. Cinco días.</p>
+        <div class="price">1.200 € <small>+ IVA</small></div>
+        <a class="more" href="/es/visibilidad-ia">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Automatización con IA</h3>
+        <p>Documentos, correos, facturas, PDFs y agentes internos. Alcance cerrado, de 2 a 4 semanas.</p>
+        <div class="price"><small>desde</small> 3.500 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Automatizaci%C3%B3n%20con%20IA">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Evaluación de LLMs y auditoría de chatbot o RAG</h3>
+        <p>Medimos con qué frecuencia se equivoca o inventa datos tu asistente, con tu propio tráfico.</p>
+        <div class="price"><small>desde</small> 3.500 €</div>
+        <a class="more" href="/es/auditoria-chatbot-ia">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Desarrollo de software y MVPs</h3>
+        <p>Webs, apps, SaaS, integraciones y APIs, de la idea a producción.</p>
+        <div class="price"><small>desde</small> 6.000 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Desarrollo%20de%20software">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Diagnóstico Ley de IA</h3>
+        <p>Inventario de sistemas, clasificación de riesgo y plan de obligaciones. Dos semanas, hasta 5 sistemas.</p>
+        <div class="price">4.900 € <small>+ IVA</small></div>
+        <a class="more" href="/es/ley-ia">Ver más →</a>
+      </div>
+      <div class="card">
+        <h3>Responsable de IA fraccional</h3>
+        <p>Un día por semana dentro de tu equipo con criterio técnico senior, mientras decides si contratas un perfil propio. Mensual y sin permanencia.</p>
+        <div class="price"><small>desde</small> 2.500 €<small>/mes</small></div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Responsable%20de%20IA%20fraccional">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>IA en subcontrata para agencias y software factories</h3>
+        <p>Capacidad senior de IA con vuestra marca, para proyectos con RAG, agentes o evaluación.</p>
+        <div class="price"><small>por jornada o</small> precio cerrado</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=IA%20en%20subcontrata">Consultar →</a>
+      </div>
+      <div class="card">
+        <h3>Formación en IA para equipos</h3>
+        <p>Talleres de media jornada o de un día, con casos reales de tu empresa.</p>
+        <div class="price"><small>desde</small> 1.500 €</div>
+        <a class="more" href="mailto:hello@protforge.com?subject=Formaci%C3%B3n%20en%20IA">Consultar →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="reunion">
+    <h2>Cómo empezamos</h2>
+    <p class="intro">Tenemos el domicilio social en Valencia y trabajamos con empresas de la Comunitat Valenciana en remoto y presencial cuando hace falta.</p>
+    <div class="steps">
+      <div class="step"><h3>Un mensaje y una llamada</h3><p>Escribe contando tu caso. Hacemos una llamada de 30 minutos por vídeo, o nos vemos si coincide con una visita nuestra a Valencia.</p></div>
+      <div class="step"><h3>Propuesta de una página</h3><p>Alcance, entregable, plazo y precio cerrado en una sola página. Sin horas abiertas y sin letra pequeña.</p></div>
+      <div class="step"><h3>Trabajo en remoto, visitas cuando aportan</h3><p>El día a día es por videollamada y entregas cortas. Vamos a Valencia para talleres de formación, para ver un proceso en su sitio o para cerrar un proyecto.</p></div>
+    </div>
+  </section>
+
+  <section id="por-que" class="why">
+    <h2>Por qué ProtForge</h2>
+    <div class="about">
+      <div>
+        <p>Somos una consultora pequeña y lo decimos tal cual: el domicilio social de PROTFORGE SL está en Valencia, el equipo trabaja desde Barcelona y nos movemos a donde haga falta. Preferimos decirlo claro que fingir una presencia local que no tenemos.</p>
+        <p>Lo que sí podemos enseñarte son pruebas públicas. Investigamos la detección de alucinaciones en modelos de lenguaje a nivel doctoral, publicamos el paquete de código abierto <a href="https://github.com/protforge-ai/groundcheck">groundcheck</a> y una <a href="https://protforge.com/research/hallucination-detectors">comparativa pública de detectores de alucinaciones</a>, y hemos elaborado el <a href="https://protforge.com/es/indice-visibilidad-ia-pymes-2026">Índice de visibilidad en IA de pymes españolas 2026</a> con 29 pymes auditadas.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>Domicilio social</dt><dd>Valencia</dd></div>
+        <div><dt>Ámbito</dt><dd>Valencia, Comunitat Valenciana y España</dd></div>
+        <div><dt>Idiomas</dt><dd>Valencià, castellano, English</dd></div>
+        <div><dt>Precio</dt><dd>Cerrado antes de empezar</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Dónde está ProtForge y cómo trabajáis con empresas de Valencia?</summary><p>Tenemos el domicilio social en Valencia y trabajamos con empresas de la Comunitat Valenciana en remoto y presencial cuando hace falta. El trabajo diario se hace desde Barcelona; nos desplazamos a Valencia para reuniones, talleres o para ver cómo se hace un proceso en la planta o en la oficina.</p></details>
+    <details><summary>¿Cuánto cuesta una consultoría de IA?</summary><p>Siempre con precio cerrado antes de empezar. La auditoría de visibilidad en IA son 1.200 € + IVA, la automatización con IA parte de 3.500 €, el desarrollo de software y MVPs de 6.000 €, el diagnóstico de la Ley de IA son 4.900 € + IVA, la formación para equipos parte de 1.500 € y el responsable de IA fraccional de 2.500 € al mes.</p></details>
+    <details><summary>¿Cómo es la primera reunión?</summary><p>Una llamada de 30 minutos por videollamada, o una visita si estamos por Valencia, en la que nos cuentas el problema y qué datos y herramientas tienes. Después te enviamos una propuesta de una página con alcance, plazo y precio cerrado. No hay compromiso.</p></details>
+    <details><summary>¿Se puede trabajar en valenciano?</summary><p>Sí. Trabajamos en valenciano, castellano e inglés, y los entregables se redactan en el idioma que prefiera tu equipo.</p></details>
+    <details><summary>¿Tenéis experiencia en mi sector?</summary><p>Lo que ofrecemos es método, no un sector concreto: medir un proceso o un asistente con datos reales, automatizar lo que se repite y documentar lo que exige la normativa. Los casos de uso se parecen mucho entre industria, agroalimentación, logística o servicios, pero no publicamos nombres de clientes ni prometemos resultados que no podamos medir.</p></details>
+    <details><summary>¿Cómo sé que sabéis de lo que habláis?</summary><p>Hacemos investigación de nivel doctoral sobre detección de alucinaciones en modelos de lenguaje y mantenemos el paquete de código abierto groundcheck, con una comparativa pública de detectores de alucinaciones. También publicamos el Índice de visibilidad en IA de pymes españolas 2026, con 29 pymes auditadas. Todo está en abierto para que lo revises.</p></details>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Cuéntanos tu caso</h2>
+    <p>Escríbenos con un par de líneas sobre tu empresa y lo que quieres resolver. Te contestamos en un día laborable. Podemos hablar en valencià, castellano o English.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Consultor%C3%ADa%20de%20IA%20en%20Valencia">hello@protforge.com</a>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Domicilio social: Valencia, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia">Ley de IA</a></span>
+    <span><a href="/es/consultoria-ia-barcelona">IA en Barcelona</a></span>
+  </footer>
+</div>
+</body>
+</html>

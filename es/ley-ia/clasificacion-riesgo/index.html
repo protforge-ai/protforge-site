@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checklist: cómo clasificar el riesgo de un sistema de IA (Ley de IA) — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/ley-ia/clasificacion-riesgo">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/ley-ia/clasificacion-riesgo">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/es/ley-ia/clasificacion-riesgo">
+<meta name="description" content="Checklist gratuita para clasificar el riesgo de un sistema de IA según el Reglamento europeo. Diagnóstico completo: 4.900 € + IVA, 2 semanas.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Checklist: cómo clasificar el riesgo de un sistema de IA (Ley de IA) — ProtForge">
+<meta property="og:description" content="Cinco pasos para saber si un sistema de IA es prohibido, de alto riesgo, de transparencia o de riesgo mínimo según el Reglamento (UE) 2024/1689.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/ley-ia/clasificacion-riesgo">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+
+  .aside a{color:var(--cobalt)}
+  .crumbs{font-size:14.5px;color:var(--ink-2);margin:0 0 18px}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table.prices{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+  table.prices th,table.prices td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.prices th{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+  table.prices td:nth-child(3){white-space:nowrap;font-weight:600}
+  table.prices td small{display:block;color:var(--ink-2);font-weight:400;font-size:14.5px}
+  .branch{margin:10px 0 0;padding:0;list-style:none}
+  .branch li{margin:6px 0;padding-left:0;color:var(--ink-2)}
+  .branch li b{color:var(--ink)}
+  .plain{margin:12px 0 0;padding-left:20px;color:var(--ink-2);max-width:62ch}
+  .plain li{margin:6px 0}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cómo clasificar el riesgo de un sistema de IA según el Reglamento europeo de IA",
+  "description": "Checklist en cinco pasos basada en el Reglamento (UE) 2024/1689: sistema de IA, práctica prohibida, alto riesgo, transparencia y riesgo mínimo.",
+  "inLanguage": "es",
+  "url": "https://protforge.com/es/ley-ia/clasificacion-riesgo",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Comprueba si es un sistema de IA",
+      "text": "Contrasta el sistema con la definición del artículo 3.1: sistema basado en una máquina que, con cierto nivel de autonomía, infiere de los datos de entrada cómo generar predicciones, contenidos, recomendaciones o decisiones. Si no lo es, el Reglamento no se aplica."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Descarta las prácticas prohibidas",
+      "text": "Revisa el artículo 5: manipulación, explotación de vulnerabilidades, puntuación social, reconocimiento de emociones en el trabajo y la educación, entre otras. Si el uso está prohibido, hay que dejar de hacerlo."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Determina si es de alto riesgo",
+      "text": "Comprueba si es componente de seguridad de un producto regulado (anexo I) o si su uso está en una de las áreas del anexo III. Valora la excepción del artículo 6.3, que no se aplica si hay perfilado de personas."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Revisa las obligaciones de transparencia",
+      "text": "Aplica el artículo 50: informar de que se interactúa con una IA, marcar el contenido sintético, revelar los deepfakes e informar del reconocimiento de emociones."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Si nada anterior aplica, es riesgo mínimo",
+      "text": "No hay obligaciones específicas más allá de la alfabetización en IA del artículo 4, y puedes adoptar códigos de conducta voluntarios."
+    }
+  ],
+  "mentions": {
+    "@type": "Service",
+    "name": "Diagnóstico de la Ley de IA",
+    "url": "https://protforge.com/es/ley-ia",
+    "provider": {
+      "@type": "Organization",
+      "@id": "https://protforge.com/#org",
+      "name": "ProtForge",
+      "url": "https://protforge.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "4900",
+      "priceCurrency": "EUR"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://protforge.com/#org",
+    "name": "ProtForge",
+    "url": "https://protforge.com"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Quién tiene que clasificar el riesgo de un sistema de IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El proveedor, que es quien desarrolla el sistema o lo comercializa con su nombre, debe determinar su categoría. Pero el responsable del despliegue, que es la empresa que lo usa, también necesita saberla para conocer sus propias obligaciones, y puede convertirse en proveedor si pone su marca a un sistema de alto riesgo o modifica su finalidad."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Un chatbot de atención al cliente es de alto riesgo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En general no. Un chatbot que responde preguntas sobre productos suele caer en las obligaciones de transparencia del artículo 50: hay que informar a la persona de que interactúa con una IA. Sería de alto riesgo si se usara para algo listado en el anexo III, por ejemplo para evaluar la solvencia de una persona o para seleccionar candidatos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el perfilado de personas y por qué importa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el tratamiento automatizado de datos personales para evaluar aspectos de una persona, como su rendimiento laboral, su situación económica, su salud o sus preferencias. Si un sistema del anexo III hace perfilado de personas físicas, se considera siempre de alto riesgo y no se puede acoger a la excepción del artículo 6.3."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Desde cuándo se aplican las obligaciones?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Las prácticas prohibidas y la alfabetización en IA se aplican desde el 2 de febrero de 2025, y las obligaciones de los modelos de uso general desde el 2 de agosto de 2025. El calendario de las obligaciones de alto riesgo ha sido objeto de propuestas de simplificación de la UE (el llamado «Ómnibus digital»), así que comprueba la fecha vigente antes de planificar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esta checklist es asesoramiento jurídico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Es una guía práctica basada en el texto del Reglamento (UE) 2024/1689 para orientarte. Los casos límite necesitan criterio jurídico y, a menudo, una revisión técnica del sistema real."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#checklist">Checklist</a>
+      <a href="#roles">Roles</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/es/ley-ia">Ley de IA</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <p class="crumbs"><a href="/es/servicios">Servicios</a> / <a href="/es/ley-ia">Ley de IA</a> / Clasificación de riesgo</p>
+    <h1>Checklist: cómo clasificar el riesgo de un sistema de IA</h1>
+    <p class="lede">Una guía en cinco pasos para saber en qué categoría del Reglamento europeo de IA, el Reglamento (UE) 2024/1689, cae un sistema, y qué te toca hacer en consecuencia. Sigue el orden: cada paso te dice si pasas al siguiente o si ya has llegado a una respuesta.</p>
+    <a class="cta" href="#checklist">Empezar la checklist</a>
+    <a class="cta secondary" href="/es/ley-ia">Diagnóstico de la Ley de IA</a>
+    <p class="aside">Actualizado: 21 de noviembre de 2026. Es una guía práctica, no asesoramiento jurídico.</p>
+  </div>
+
+  <section id="checklist">
+    <h2>La checklist</h2>
+    <p class="intro">Haz la clasificación por separado para cada sistema, y fíjate en para qué se usa, no solo en qué tecnología tiene: el mismo modelo puede ser de riesgo mínimo en un uso y de alto riesgo en otro.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>¿Es un sistema de IA?</h3>
+        <p>El artículo 3.1 lo define como un sistema basado en una máquina, diseñado para funcionar con distintos niveles de autonomía, que a partir de los datos que recibe infiere cómo generar resultados, como predicciones, contenidos, recomendaciones o decisiones, que pueden influir en entornos físicos o virtuales.</p>
+        <ul class="branch">
+          <li><b>No:</b> una hoja de cálculo con fórmulas fijas o un programa que solo aplica reglas escritas por una persona no entra. El Reglamento no se aplica. Fin.</li>
+          <li><b>Sí:</b> pasa al paso 2. Un modelo de lenguaje, un sistema de recomendación o un clasificador entrenado con datos son sistemas de IA.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>¿Es una práctica prohibida? (artículo 5)</h3>
+        <p>Algunos usos están prohibidos directamente: técnicas subliminales o engañosas que distorsionan el comportamiento y causan perjuicio, explotación de vulnerabilidades por edad o discapacidad, puntuación social, evaluar el riesgo de que alguien cometa un delito solo por su perfilado, crear bases de datos de reconocimiento facial con imágenes extraídas indiscriminadamente, inferir emociones en el lugar de trabajo o en centros educativos (salvo por motivos médicos o de seguridad), categorizar a personas por datos biométricos para deducir rasgos sensibles, y la identificación biométrica remota en tiempo real en espacios públicos para la aplicación de la ley, con excepciones muy tasadas.</p>
+        <ul class="branch">
+          <li><b>Sí:</b> hay que dejar de usarlo. Es la categoría con las sanciones más altas.</li>
+          <li><b>No:</b> pasa al paso 3.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>¿Es de alto riesgo? (artículo 6, anexos I y III)</h3>
+        <p>Hay dos caminos. El primero, el anexo I: el sistema es un componente de seguridad de un producto regulado por la legislación de armonización de la Unión que se lista allí (máquinas, juguetes, productos sanitarios y similares), o es él mismo ese producto, y el producto requiere evaluación de conformidad por un tercero. El segundo, el anexo III, que enumera estas áreas:</p>
+        <ul class="plain">
+          <li>Biometría (identificación, categorización, reconocimiento de emociones)</li>
+          <li>Infraestructuras críticas</li>
+          <li>Educación y formación profesional</li>
+          <li>Empleo y gestión de trabajadores: selección, evaluación, asignación de tareas, despidos</li>
+          <li>Acceso a servicios esenciales: prestaciones públicas, solvencia y crédito, tarificación de seguros de vida y de salud, triaje de emergencias</li>
+          <li>Aplicación de la ley</li>
+          <li>Migración, asilo y control de fronteras</li>
+          <li>Administración de justicia y procesos democráticos</li>
+        </ul>
+        <p style="margin-top:12px">Dos matices. El artículo 6.3 permite considerar que un sistema del anexo III no es de alto riesgo si no supone un riesgo significativo para la salud, la seguridad o los derechos fundamentales, por ejemplo porque hace solo una tarea procedimental limitada, mejora el resultado de una actividad humana ya hecha, detecta patrones sin sustituir la valoración humana o es una tarea preparatoria. Esa conclusión hay que documentarla antes de comercializar el sistema. Y la excepción nunca vale si el sistema hace perfilado de personas físicas: ahí siempre es de alto riesgo.</p>
+        <ul class="branch">
+          <li><b>Sí:</b> hay obligaciones de gestión de riesgos, calidad de datos, documentación técnica, registros, supervisión humana, precisión y robustez. Recaen sobre el proveedor, y el responsable del despliegue tiene las suyas. Revisa la fecha vigente, más abajo.</li>
+          <li><b>No:</b> pasa al paso 4.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>¿Tiene obligaciones de transparencia? (artículo 50)</h3>
+        <p>Aunque no sea de alto riesgo, puede tener estas obligaciones: informar a las personas de que interactúan con una IA, como un chatbot, salvo que sea evidente; marcar el contenido sintético de audio, imagen, vídeo o texto en un formato legible por máquina, que recae en el proveedor; que quien use un deepfake revele que está generado artificialmente; informar a las personas expuestas cuando se use reconocimiento de emociones o categorización biométrica, y revelar el texto generado por IA que se publique para informar al público sobre asuntos de interés público.</p>
+        <ul class="branch">
+          <li><b>Sí:</b> cumples esas obligaciones concretas, que se suman a las demás.</li>
+          <li><b>No:</b> pasa al paso 5.</li>
+        </ul>
+      </div>
+      <div class="step">
+        <h3>Riesgo mínimo</h3>
+        <p>Si nada de lo anterior aplica, el sistema es de riesgo mínimo: no tiene obligaciones específicas del Reglamento, más allá de la alfabetización en IA del artículo 4 que afecta a todos, y puedes adoptar códigos de conducta voluntarios. Es el caso de muchos filtros, buscadores internos o herramientas de productividad. Apunta igualmente cómo llegaste a esa conclusión.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="roles">
+    <h2>Proveedor o responsable del despliegue</h2>
+    <p class="intro">Las obligaciones cambian según tu papel, y puedes tener uno distinto en cada sistema.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Proveedor</h3></div>
+        <div><p>Quien desarrolla un sistema de IA, o lo hace desarrollar, y lo comercializa o lo pone en servicio con su nombre o marca. Carga con la mayor parte de las obligaciones: evaluación de conformidad, documentación técnica, sistema de gestión de calidad y registro.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Responsable del despliegue (deployer)</h3></div>
+        <div><p>Quien usa un sistema de IA bajo su autoridad en una actividad profesional. En alto riesgo debe usarlo según las instrucciones, asignar supervisión humana competente, vigilar su funcionamiento, conservar los registros que genere e informar a las personas afectadas, entre otras cosas. Si le pone su marca a un sistema de alto riesgo, o cambia sustancialmente su finalidad, pasa a ser proveedor.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Alfabetización en IA (artículo 4)</h3></div>
+        <div><p>Se aplica a proveedores y responsables del despliegue, sea cual sea el riesgo de sus sistemas: hay que procurar que el personal que usa IA tenga un nivel suficiente de conocimiento. Está en vigor desde el 2 de febrero de 2025.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fechas">
+    <h2>Fechas de aplicación</h2>
+    <p class="intro">Las prácticas prohibidas (artículo 5) y la alfabetización en IA (artículo 4) se aplican desde el 2 de febrero de 2025. Las obligaciones de los modelos de uso general, desde el 2 de agosto de 2025. El calendario de las obligaciones de alto riesgo ha sido objeto de propuestas de simplificación de la UE, el llamado «Ómnibus digital», así que no damos aquí una fecha: comprueba la vigente antes de planificar. Clasificar ya es útil igualmente, porque la categoría no cambia con el calendario.</p>
+  </section>
+
+  <section id="diagnostico">
+    <h2>Si prefieres que lo hagamos nosotros</h2>
+    <p class="intro">La clasificación sobre el papel es el primer paso, pero los casos límite se resuelven mirando cómo funciona el sistema real. Nuestro <a href="/es/ley-ia">diagnóstico de la Ley de IA</a> inventaría los sistemas de tu empresa, los clasifica con la justificación por escrito y te da un plan de obligaciones priorizado. Son dos semanas, hasta cinco sistemas, por <b>4.900 € + IVA</b> a precio cerrado. El equipo viene de una investigación doctoral sobre alucinaciones en modelos de lenguaje y tiene la herramienta de código abierto <a href="/research/hallucination-detectors">groundcheck</a>, y por eso la parte técnica, como medir la precisión de un sistema, está cubierta. No damos asesoramiento jurídico: si tienes asesor legal, trabajamos con él.</p>
+    <a class="cta" href="mailto:hello@protforge.com?subject=Diagn%C3%B3stico%20Ley%20de%20IA">Pedir el diagnóstico</a>
+    <p class="aside">¿Tu sistema es un chatbot? Mira también la <a href="/es/auditoria-chatbot-ia">auditoría de chatbots y asistentes con IA</a>, y todos los <a href="/es/servicios">servicios</a>.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Quién tiene que clasificar el riesgo de un sistema de IA?</summary><p>El proveedor, que es quien desarrolla el sistema o lo comercializa con su nombre, debe determinar su categoría. Pero el responsable del despliegue, que es la empresa que lo usa, también necesita saberla para conocer sus propias obligaciones, y puede convertirse en proveedor si pone su marca a un sistema de alto riesgo o modifica su finalidad.</p></details>
+    <details><summary>¿Un chatbot de atención al cliente es de alto riesgo?</summary><p>En general no. Un chatbot que responde preguntas sobre productos suele caer en las obligaciones de transparencia del artículo 50: hay que informar a la persona de que interactúa con una IA. Sería de alto riesgo si se usara para algo listado en el anexo III, por ejemplo para evaluar la solvencia de una persona o para seleccionar candidatos.</p></details>
+    <details><summary>¿Qué es el perfilado de personas y por qué importa?</summary><p>Es el tratamiento automatizado de datos personales para evaluar aspectos de una persona, como su rendimiento laboral, su situación económica, su salud o sus preferencias. Si un sistema del anexo III hace perfilado de personas físicas, se considera siempre de alto riesgo y no se puede acoger a la excepción del artículo 6.3.</p></details>
+    <details><summary>¿Desde cuándo se aplican las obligaciones?</summary><p>Las prácticas prohibidas y la alfabetización en IA se aplican desde el 2 de febrero de 2025, y las obligaciones de los modelos de uso general desde el 2 de agosto de 2025. El calendario de las obligaciones de alto riesgo ha sido objeto de propuestas de simplificación de la UE (el llamado «Ómnibus digital»), así que comprueba la fecha vigente antes de planificar.</p></details>
+    <details><summary>¿Esta checklist es asesoramiento jurídico?</summary><p>No. Es una guía práctica basada en el texto del Reglamento (UE) 2024/1689 para orientarte. Los casos límite necesitan criterio jurídico y, a menudo, una revisión técnica del sistema real.</p></details>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>¿Dudas con un caso concreto?</h2>
+    <p>Cuéntanos en un par de líneas qué hace el sistema y para qué lo usas. Te contestamos en un día laborable y te decimos si merece un diagnóstico completo.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Clasificaci%C3%B3n%20de%20riesgo%20IA">hello@protforge.com</a>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia">Ley de IA</a></span>
+    <span><a href="/es/auditoria-chatbot-ia">Auditoría de chatbots</a></span>
+    <span><a href="/es/cuanto-cuesta-ia-empresa">Cuánto cuesta la IA</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -10,10 +10,16 @@
 - [Auditoría de visibilidad en IA](https://protforge.com/es/visibilidad-ia): versión en español.
 - [Diagnóstico de la Ley de IA](https://protforge.com/es/ley-ia): EU AI Act diagnostic, 4.900 EUR + VAT, two weeks, up to five AI systems.
 - [LLM evaluation and hallucination audit](https://protforge.com/en/llm-evaluation-audit): evaluation set built from the client's own traffic, hallucination, quality, retrieval and agent-failure rates, harness handed over for CI. From $3,500 fixed price, 2 weeks.
+- [RAG and AI agent evaluation](https://protforge.com/en/rag-evaluation): retrieval, groundedness, citation and tool-call failure measurement for RAG systems and agents, with a practical 5-step guide. $4,000 fixed price, 2 weeks.
+- [Auditoría de chatbots y RAG (ES)](https://protforge.com/es/auditoria-chatbot-ia): Spanish version of the LLM evaluation audit, from 3.500 EUR + VAT, 2 weeks.
+- [Cuánto cuesta implantar IA en una empresa (ES)](https://protforge.com/es/cuanto-cuesta-ia-empresa): price table for chatbots, automation, MVPs, training and fractional AI lead, 2026.
+- [Checklist de clasificación de riesgo, Ley de IA (ES)](https://protforge.com/es/ley-ia/clasificacion-riesgo): free step-by-step EU AI Act risk classification (Art. 5, Annex I/III, Art. 6.3, Art. 50).
+- [Consultoría de IA en Barcelona](https://protforge.com/es/consultoria-ia-barcelona) and [Valencia](https://protforge.com/es/consultoria-ia-valencia): local pages for Catalonia and the Valencian Community.
 - [LLM reliability audit](https://protforge.com/#services): hallucination and groundedness evaluation built from the client's own traffic, from 3.500 EUR.
 - AI automation for businesses (document assistants, email/invoice/PDF automation, internal agents): from 3.500 EUR, fixed scope, 2 to 4 weeks.
 - Software development and MVPs (web, apps, SaaS, integrations, APIs): from 6.000 EUR.
-- Fractional AI lead, 1 to 2 days a week: 4.000 EUR/month ($4,000/month).
+- Fractional AI lead: from 2.500 EUR/month for one day a week in Spain; $4,000/month (1 to 2 days a week) for US clients.
+- White-label AI capacity for agencies and software houses: senior AI engineering subcontracted under the agency's brand.
 - AI training for teams (half-day or full-day workshops): from 1.500 EUR.
 
 ## Research

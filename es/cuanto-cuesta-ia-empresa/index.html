@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuánto cuesta implantar IA en una empresa (precios 2026) — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/cuanto-cuesta-ia-empresa">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/cuanto-cuesta-ia-empresa">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/es/cuanto-cuesta-ia-empresa">
+<meta name="description" content="Cuánto cuesta implantar IA en una empresa en 2026: chatbot RAG, automatización, agentes, MVP, formación y más. Tabla de precios reales desde 1.200 €.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Cuánto cuesta implantar IA en una empresa (precios 2026) — ProtForge">
+<meta property="og:description" content="Precios reales por tipo de proyecto de IA: chatbot sobre documentos, automatización, agentes, MVP, formación, IA fraccional y Ley de IA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/cuanto-cuesta-ia-empresa">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+
+  .aside a{color:var(--cobalt)}
+  .crumbs{font-size:14.5px;color:var(--ink-2);margin:0 0 18px}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table.prices{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+  table.prices th,table.prices td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.prices th{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+  table.prices td:nth-child(3){white-space:nowrap;font-weight:600}
+  table.prices td small{display:block;color:var(--ink-2);font-weight:400;font-size:14.5px}
+  .branch{margin:10px 0 0;padding:0;list-style:none}
+  .branch li{margin:6px 0;padding-left:0;color:var(--ink-2)}
+  .branch li b{color:var(--ink)}
+  .plain{margin:12px 0 0;padding-left:20px;color:var(--ink-2);max-width:62ch}
+  .plain li{margin:6px 0}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "OfferCatalog",
+  "name": "Precios de servicios de IA para empresas — ProtForge",
+  "url": "https://protforge.com/es/cuanto-cuesta-ia-empresa",
+  "inLanguage": "es",
+  "itemListElement": [
+    {
+      "@type": "Offer",
+      "price": "1200",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Auditoría de visibilidad en IA",
+        "url": "https://protforge.com/es/visibilidad-ia",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "3500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Automatización con IA (chatbot sobre documentos, correos, facturas y PDF, agente interno)",
+        "url": "https://protforge.com/es/servicios",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "3500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Auditoría de chatbots y asistentes con IA (RAG)",
+        "url": "https://protforge.com/es/auditoria-chatbot-ia",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "6000",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Desarrollo de software y MVP",
+        "url": "https://protforge.com/es/servicios",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "1500",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Formación en IA para equipos",
+        "url": "https://protforge.com/es/servicios",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "2500",
+      "priceCurrency": "EUR",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "2500",
+        "priceCurrency": "EUR",
+        "unitText": "MONTH"
+      },
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Responsable de IA fraccional (1 día por semana)",
+        "url": "https://protforge.com/es/servicios",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    },
+    {
+      "@type": "Offer",
+      "price": "4900",
+      "priceCurrency": "EUR",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "Diagnóstico de la Ley de IA",
+        "url": "https://protforge.com/es/ley-ia",
+        "provider": {
+          "@type": "Organization",
+          "@id": "https://protforge.com/#org",
+          "name": "ProtForge",
+          "url": "https://protforge.com"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "España"
+        }
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un chatbot con IA sobre los documentos de mi empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nuestros proyectos de asistentes sobre documentos empiezan en 3.500 € con alcance cerrado y entre dos y cuatro semanas de plazo. El precio sube con el número de fuentes de datos, la calidad de los documentos y las integraciones que haga falta, y lo fijamos antes de empezar."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta mantenerlo cada mes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Depende del volumen. Hay un coste de uso del modelo, que se paga por consulta, y el alojamiento. Para muchos casos de empresa son importes mensuales modestos, pero la cifra real depende de cuántas consultas haya y de los documentos que se manejen, y la medimos con tu volumen antes de prometerte nada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es caro implantar IA en una pyme?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No tiene por qué. Un primer proyecto acotado, como automatizar un proceso concreto, puede empezar en unos pocos miles de euros. Lo caro es empezar sin un problema definido o sin medir si el resultado funciona."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué incluye el precio cerrado?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un alcance escrito antes de empezar, con entregables y plazo. Si durante el trabajo aparece algo fuera de ese alcance, te lo decimos y decides tú; no facturamos horas adicionales por sorpresa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo sé si necesito una auditoría o un proyecto nuevo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Si ya tienes un chatbot o un asistente que falla, empieza por medir: la auditoría de chatbots cuesta desde 3.500 € + IVA y te dice qué corregir. Si todavía no tienes nada, lo primero es una llamada para ver si el caso merece un proyecto."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Los precios llevan IVA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cuando indicamos «+ IVA» el precio es sin IVA. En el resto de casos confirmamos el importe final con IVA en la propuesta escrita antes de empezar."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#tabla">Precios</a>
+      <a href="#factores">Qué lo encarece</a>
+      <a href="#no-gastar">Cuándo no gastar</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Cuánto cuesta implantar IA en una empresa (precios 2026)</h1>
+    <p class="lede">La respuesta honesta es que depende, pero no tanto como suele parecer. Aquí tienes lo que cobramos nosotros por cada tipo de proyecto, qué hace que el precio suba o baje, qué preguntar a cualquier proveedor y en qué casos te aconsejamos no gastar todavía.</p>
+    <a class="cta" href="#tabla">Ver la tabla de precios</a>
+    <a class="cta secondary" href="mailto:hello@protforge.com?subject=Presupuesto%20de%20IA">Pedir presupuesto</a>
+    <p class="aside">Actualizado: 21 de noviembre de 2026</p>
+  </div>
+
+  <section id="tabla">
+    <h2>Precios de partida por tipo de proyecto</h2>
+    <p class="intro">Son precios reales de ProtForge, no horquillas de mercado. Cada proyecto se cierra por escrito tras una llamada de 30 minutos, y el precio final puede ser superior si el alcance lo es.</p>
+    <div class="tablewrap">
+      <table class="prices">
+        <thead><tr><th>Qué necesitas</th><th>Qué es</th><th>Desde</th><th>Plazo</th></tr></thead>
+        <tbody>
+          <tr><td>Chatbot con tus documentos (RAG)</td><td>Asistente que responde con la información de tu empresa y cita sus fuentes<small>Automatización con IA</small></td><td>3.500 €</td><td>2 a 4 semanas</td></tr>
+          <tr><td>Automatizar correos, facturas o PDF</td><td>Lectura, clasificación y extracción de datos de documentos, con revisión humana donde haga falta<small>Automatización con IA</small></td><td>3.500 €</td><td>2 a 4 semanas</td></tr>
+          <tr><td>Agente interno</td><td>Asistente que usa tus herramientas y hace tareas en varios pasos<small>Automatización con IA</small></td><td>3.500 €</td><td>2 a 4 semanas, según integraciones</td></tr>
+          <tr><td>Saber si tu chatbot falla</td><td><a href="/es/auditoria-chatbot-ia">Auditoría de chatbots y asistentes con IA</a>: medición con tus conversaciones y banco de pruebas</td><td>3.500 € + IVA</td><td>2 semanas</td></tr>
+          <tr><td>Que te recomienden ChatGPT, Claude o Perplexity</td><td><a href="/es/visibilidad-ia">Auditoría de visibilidad en IA</a></td><td>1.200 € + IVA</td><td>5 días</td></tr>
+          <tr><td>Un MVP o producto propio</td><td>Webs, apps, SaaS, integraciones y APIs, de la idea a producción</td><td>6.000 €</td><td>Según alcance</td></tr>
+          <tr><td>Formar a tu equipo</td><td>Talleres con casos de tu empresa</td><td>1.500 €</td><td>Media jornada o un día</td></tr>
+          <tr><td>Criterio técnico senior sin contratar</td><td>Responsable de IA fraccional, un día por semana. Mensual y sin permanencia</td><td>2.500 € al mes</td><td>Continuo</td></tr>
+          <tr><td>Saber qué exige la Ley de IA</td><td><a href="/es/ley-ia">Diagnóstico del Reglamento europeo de IA</a>, hasta cinco sistemas</td><td>4.900 € + IVA</td><td>2 semanas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="aside">Todo el catálogo está en <a href="/es/servicios">servicios</a>. Donde la tabla no dice «+ IVA», confirmamos el importe con impuestos en la propuesta escrita.</p>
+  </section>
+
+  <section id="factores">
+    <h2>Qué hace que el precio suba o baje</h2>
+    <p class="intro">Casi nunca es el modelo de IA. Es todo lo que lo rodea.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Integraciones</h3></div>
+        <div><p>Conectar la IA a tu CRM, tu ERP, tu gestor documental o tu correo es la parte que más tiempo consume. Un asistente que solo lee un conjunto de PDF es mucho más barato que uno que además escribe en tus sistemas.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Calidad de los datos</h3></div>
+        <div><p>Si los documentos están desactualizados, duplicados, escaneados sin texto o se contradicen entre sí, la IA lo repetirá con mucha seguridad. Ordenar eso suele ser parte del trabajo, y a veces la parte más útil.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Volumen y requisitos de fiabilidad</h3></div>
+        <div><p>Una herramienta para diez personas no es lo mismo que un servicio de cara al cliente. Cuanto más cuesta un error, más medición, revisión humana y pruebas hacen falta, y eso se paga.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Costes de funcionamiento</h3></div>
+        <div><p>Usar un modelo de lenguaje por API se paga por consulta, y hay un alojamiento. Depende del volumen: para muchos usos de empresa son importes mensuales pequeños frente al coste del proyecto, pero no te daremos una cifra sin conocer cuántas consultas esperas y sobre cuántos documentos. Desconfía de quien te la dé sin preguntar.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntar">
+    <h2>Qué preguntar a cualquier proveedor</h2>
+    <p class="intro">Sirve para nosotros y para quien compares con nosotros.</p>
+    <ul class="plain">
+      <li>¿Qué entregáis exactamente y cuándo? Un alcance escrito, no una promesa.</li>
+      <li>¿El precio es cerrado o por horas? Si es por horas, ¿hay un tope?</li>
+      <li>¿Cómo vais a medir que funciona? Si la respuesta es «lo probamos a mano», pide algo más.</li>
+      <li>¿Qué coste mensual tendrá en funcionamiento, con mi volumen, y quién lo paga?</li>
+      <li>¿Qué pasa con mis datos? Dónde se procesan, qué proveedor de modelos se usa y si se usan para entrenar.</li>
+      <li>¿Puedo llevarme el resultado? Código, configuración y documentación tuyos, sin depender del proveedor.</li>
+    </ul>
+  </section>
+
+  <section id="no-gastar">
+    <h2>Cuándo no gastar todavía</h2>
+    <p class="intro">Estas son las situaciones en las que te diríamos que esperes.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>No tienes un problema concreto</h3></div>
+        <div><p>«Queremos usar IA» no es un proyecto. Si no puedes decir qué tarea concreta se hace hoy a mano, cuánto tiempo lleva y cómo sabrás que mejora, todavía no toca construir nada.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>La herramienta ya existe</h3></div>
+        <div><p>Si lo que necesitas lo hace una suscripción que ya pagas o un producto de catálogo, usarlo cuesta menos que desarrollarlo. Desarrollar a medida compensa cuando tus datos, tus procesos o tu volumen lo piden.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Tus datos no están listos</h3></div>
+        <div><p>Si la información está en la cabeza de dos personas o en carpetas sin orden, empieza por documentarla. Es más barato y mejora cualquier proyecto posterior, con IA o sin ella.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Nadie va a usarlo</h3></div>
+        <div><p>Un asistente perfecto que el equipo no adopta no ahorra nada. Antes de gastar, habla con quienes lo usarían y asegúrate de que lo quieren.</p></div>
+      </div>
+    </div>
+    <p class="aside">En todos estos casos, una llamada de 30 minutos no te cuesta nada y te dice si hay proyecto. Si no lo hay, te lo decimos.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto cuesta un chatbot con IA sobre los documentos de mi empresa?</summary><p>Nuestros proyectos de asistentes sobre documentos empiezan en 3.500 € con alcance cerrado y entre dos y cuatro semanas de plazo. El precio sube con el número de fuentes de datos, la calidad de los documentos y las integraciones que haga falta, y lo fijamos antes de empezar.</p></details>
+    <details><summary>¿Cuánto cuesta mantenerlo cada mes?</summary><p>Depende del volumen. Hay un coste de uso del modelo, que se paga por consulta, y el alojamiento. Para muchos casos de empresa son importes mensuales modestos, pero la cifra real depende de cuántas consultas haya y de los documentos que se manejen, y la medimos con tu volumen antes de prometerte nada.</p></details>
+    <details><summary>¿Es caro implantar IA en una pyme?</summary><p>No tiene por qué. Un primer proyecto acotado, como automatizar un proceso concreto, puede empezar en unos pocos miles de euros. Lo caro es empezar sin un problema definido o sin medir si el resultado funciona.</p></details>
+    <details><summary>¿Qué incluye el precio cerrado?</summary><p>Un alcance escrito antes de empezar, con entregables y plazo. Si durante el trabajo aparece algo fuera de ese alcance, te lo decimos y decides tú; no facturamos horas adicionales por sorpresa.</p></details>
+    <details><summary>¿Cómo sé si necesito una auditoría o un proyecto nuevo?</summary><p>Si ya tienes un chatbot o un asistente que falla, empieza por medir: la auditoría de chatbots cuesta desde 3.500 € + IVA y te dice qué corregir. Si todavía no tienes nada, lo primero es una llamada para ver si el caso merece un proyecto.</p></details>
+    <details><summary>¿Los precios llevan IVA?</summary><p>Cuando indicamos «+ IVA» el precio es sin IVA. En el resto de casos confirmamos el importe final con IVA en la propuesta escrita antes de empezar.</p></details>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Cuéntanos qué quieres resolver</h2>
+    <p>Un par de líneas sobre tu empresa y el proceso o el problema que tienes en mente. Te contestamos en un día laborable, con una idea de alcance y de precio.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Presupuesto%20de%20IA">hello@protforge.com</a>
+    <p>Aceptamos pocos encargos a la vez para que cada uno tenga atención directa.</p>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia">Ley de IA</a></span>
+    <span><a href="/es/auditoria-chatbot-ia">Auditoría de chatbots</a></span>
+    <span><a href="/es/cuanto-cuesta-ia-empresa">Cuánto cuesta la IA</a></span>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditoría de chatbots y asistentes con IA (RAG) — ProtForge</title>
+<link rel="canonical" href="https://protforge.com/es/auditoria-chatbot-ia">
+<link rel="alternate" hreflang="es" href="https://protforge.com/es/auditoria-chatbot-ia">
+<link rel="alternate" hreflang="x-default" href="https://protforge.com/es/auditoria-chatbot-ia">
+<meta name="description" content="Auditoría de chatbots y asistentes con IA (RAG): medimos cuánto se inventa tu chatbot con tus propias conversaciones. Desde 3.500 € + IVA, 2 semanas.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Auditoría de chatbots y asistentes con IA (RAG) — ProtForge">
+<meta property="og:description" content="Medimos cuánto se inventa tu chatbot o RAG con tus propias conversaciones y te dejamos un banco de pruebas para CI. Desde 3.500 € + IVA.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://protforge.com/es/auditoria-chatbot-ia">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4F3;
+    --ink:#0F2420;
+    --ink-2:#3B4E49;
+    --line:#C9D2CE;
+    --cobalt:#1E3FB8;
+    --flag:#C8471B;
+    --ok:#1D7A4E;
+    --mark:#FFF1C2;
+    --max:1080px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414;
+    }
+  }
+  :root[data-theme="dark"]{ --paper:#0F1B18; --ink:#EDF2EF; --ink-2:#A9B8B2; --line:#2A3D37; --cobalt:#8FA8FF; --flag:#FF8A5B; --ok:#5CC48E; --mark:#3A3414; }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:var(--cobalt);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+  @media(min-width:760px){.wrap{padding:0 32px}}
+
+  header.top{display:flex;justify-content:space-between;align-items:baseline;padding:28px 0 0}
+  .wordmark{font-family:"Instrument Serif",Georgia,serif;font-size:28px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .wordmark em{font-style:italic;color:var(--cobalt)}
+  nav a{margin-left:22px;font-size:15px;color:var(--ink-2);text-decoration:none}
+  nav a:hover{color:var(--ink);text-decoration:underline}
+  @media(max-width:600px){nav a{margin-left:14px;font-size:14px}}
+
+  .hero{padding:72px 0 56px;border-bottom:1px solid var(--line)}
+  .hero h1{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(40px,6.2vw,74px);line-height:1.02;letter-spacing:-.015em;margin:0 0 26px;max-width:16ch}
+  .hero p.lede{font-size:clamp(18px,2vw,21px);max-width:58ch;color:var(--ink-2);margin:0 0 34px}
+  .cta{display:inline-block;background:var(--ink);color:var(--paper);padding:13px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px}
+  .cta:hover{background:var(--cobalt)}
+  .cta.secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+  .cta.secondary:hover{background:transparent;color:var(--cobalt);border-color:var(--cobalt)}
+
+  /* the trace: one answer, three claims, one flagged */
+  .trace{margin-top:56px;border:1px solid var(--line);border-radius:6px;background:color-mix(in srgb,var(--paper) 70%,white 30%);overflow:hidden}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .trace{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .trace .bar{display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .trace .body{display:grid;grid-template-columns:1fr;gap:0}
+  @media(min-width:760px){.trace .body{grid-template-columns:1.2fr 1fr}}
+  .trace .answer{padding:22px 20px;font-size:17px;line-height:1.7}
+  .trace .answer s{text-decoration:none}
+  .claim{padding:1px 3px;border-radius:3px;border-bottom:2px solid var(--ok)}
+  .claim.flagged{background:var(--mark);border-bottom-color:var(--flag)}
+  .trace .sources{border-top:1px solid var(--line);padding:18px 20px;font-size:14.5px;line-height:1.5}
+  @media(min-width:760px){.trace .sources{border-top:0;border-left:1px solid var(--line)}}
+  .trace .sources ol{margin:0;padding-left:20px}
+  .trace .sources li{margin:0 0 10px;color:var(--ink-2)}
+  .trace .sources li b{color:var(--ink);font-weight:600}
+  .trace .sources li.bad b{color:var(--flag)}
+  .trace .sources li.bad{color:var(--flag)}
+  .sup{font-size:11px;vertical-align:super;color:var(--cobalt);margin-left:1px}
+  .sup.bad{color:var(--flag)}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  section h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,42px);line-height:1.1;letter-spacing:-.01em;margin:0 0 10px}
+  section p.intro{color:var(--ink-2);max-width:62ch;margin:0 0 40px;font-size:18px}
+
+  .services{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .service{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.service{grid-template-columns:260px 1fr 180px;gap:32px}}
+  .service h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0;line-height:1.15}
+  .service p{margin:0 0 8px;max-width:60ch}
+  .service ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2)}
+  .service ul li{margin:4px 0}
+  .service .terms{color:var(--ink-2);font-size:15px}
+  .service .terms b{display:block;color:var(--ink);font-weight:600;font-size:17px}
+
+
+  .practices{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .practice{display:grid;grid-template-columns:1fr;gap:10px;padding:28px 0;border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.practice{grid-template-columns:300px 1fr;gap:40px}}
+  .practice h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:27px;margin:0 0 6px;line-height:1.15}
+  .practice .who{color:var(--ink-2);font-size:15px;margin:0}
+  .practice p{margin:0 0 10px;max-width:62ch}
+  .practice .proof{font-size:14.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:12px;margin-top:6px}
+  .practice .proof b{color:var(--ink);font-weight:600}
+  .aside{color:var(--ink-2);font-size:15px;margin:22px 0 0}
+  .cases{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.cases{grid-template-columns:repeat(3,1fr);gap:32px}}
+  .case h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .case p{margin:0 0 10px;color:var(--ink-2)}
+  .case .stack{font-size:14px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .case a{color:var(--ink)}
+
+  .about{display:grid;grid-template-columns:1fr;gap:28px}
+  @media(min-width:760px){.about{grid-template-columns:1.1fr .9fr;gap:56px}}
+  .about p{max-width:58ch}
+  .facts{border-top:1px solid var(--line)}
+  .facts div{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+  .facts dt{color:var(--ink-2);margin:0}
+  .facts dd{margin:0}
+
+  .contact{padding:72px 0 40px;border-bottom:0}
+  .contact h2{max-width:20ch}
+  .contact p{max-width:58ch;color:var(--ink-2)}
+  .contact .mail{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,3.4vw,40px);color:var(--ink);text-decoration:none;border-bottom:2px solid var(--cobalt);display:inline-block;margin:10px 0 20px}
+  .contact .mail:hover{color:var(--cobalt)}
+  footer{padding:24px 0 48px;font-size:13.5px;color:var(--ink-2);border-top:1px solid var(--line)}
+  footer span{display:inline-block;margin-right:18px}
+
+  header.top{flex-wrap:wrap;gap:8px 16px}
+  nav{display:flex;flex-wrap:wrap;gap:4px 0}
+  .hero h1{max-width:20ch}
+  .cards{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:760px){.cards{grid-template-columns:repeat(2,1fr);gap:20px}}
+  .card{border:1px solid var(--line);border-radius:6px;padding:22px 20px;display:flex;flex-direction:column;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .card,:root:not([data-theme="light"]) .sample{background:color-mix(in srgb,var(--paper) 80%,black 20%)} }
+  .card h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 8px;line-height:1.15}
+  .card p{margin:0 0 14px;color:var(--ink-2)}
+  .card .price{font-weight:600;color:var(--ink);margin:auto 0 6px;font-size:18px}
+  .card .price small{font-weight:400;color:var(--ink-2);font-size:14px}
+  .card a.more{font-weight:500}
+  .card.featured{border-color:var(--cobalt)}
+  .sample{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:color-mix(in srgb,var(--paper) 70%,white 30%)}
+  .sample .bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:10px 16px;border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .metrics{display:grid;grid-template-columns:repeat(2,1fr);border-bottom:1px solid var(--line)}
+  @media(min-width:760px){.metrics{grid-template-columns:repeat(4,1fr)}}
+  .metrics div{padding:16px 18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:-1px}
+  .metrics b{display:block;font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:38px;line-height:1.1}
+  .metrics b.bad{color:var(--flag)}
+  .metrics span{font-size:14px;color:var(--ink-2)}
+  .sample ul{margin:0;padding:18px 20px 18px 38px}
+  .sample li{margin:0 0 8px}
+  .sample li:last-child{margin:0}
+  .steps{counter-reset:s;display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line)}
+  .step{padding:24px 0 24px 52px;border-bottom:1px solid var(--line);position:relative}
+  .step:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:20px;font-family:"Instrument Serif",Georgia,serif;font-size:36px;color:var(--cobalt);line-height:1}
+  .step h3{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:26px;margin:0 0 6px}
+  .step p{margin:0;max-width:62ch;color:var(--ink-2)}
+  .plans{display:grid;grid-template-columns:1fr;gap:16px}
+  @media(min-width:900px){.plans{grid-template-columns:repeat(3,1fr)}}
+  details{border-bottom:1px solid var(--line);padding:16px 0}
+  details:first-of-type{border-top:1px solid var(--line)}
+  summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;padding-right:24px;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";position:absolute;right:0;top:0;color:var(--cobalt);font-size:22px;line-height:1.2}
+  details[open] summary:after{content:"\2212"}
+  details p{margin:10px 0 0;max-width:64ch;color:var(--ink-2)}
+  .why p{max-width:62ch}
+  .cta.secondary{margin-left:0;margin-top:10px}
+  @media(min-width:520px){.cta.secondary{margin-left:12px;margin-top:0}}
+
+  .aside a{color:var(--cobalt)}
+  .crumbs{font-size:14.5px;color:var(--ink-2);margin:0 0 18px}
+  .tablewrap{overflow-x:auto;border-top:1px solid var(--line)}
+  table.prices{width:100%;border-collapse:collapse;font-size:16px;min-width:640px}
+  table.prices th,table.prices td{text-align:left;padding:14px 12px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.prices th{font-size:13.5px;font-weight:600;color:var(--ink-2)}
+  table.prices td:nth-child(3){white-space:nowrap;font-weight:600}
+  table.prices td small{display:block;color:var(--ink-2);font-weight:400;font-size:14.5px}
+  .branch{margin:10px 0 0;padding:0;list-style:none}
+  .branch li{margin:6px 0;padding-left:0;color:var(--ink-2)}
+  .branch li b{color:var(--ink)}
+  .plain{margin:12px 0 0;padding-left:20px;color:var(--ink-2);max-width:62ch}
+  .plain li{margin:6px 0}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Auditoría de chatbots y asistentes con IA (RAG)",
+  "serviceType": "Evaluación y auditoría de alucinaciones en chatbots y sistemas RAG",
+  "description": "Auditoría de chatbots y asistentes con IA (RAG): medimos cuánto se inventa tu chatbot con tus propias conversaciones. Desde 3.500 € + IVA, 2 semanas.",
+  "url": "https://protforge.com/es/auditoria-chatbot-ia",
+  "inLanguage": "es",
+  "provider": {
+    "@type": "Organization",
+    "@id": "https://protforge.com/#org",
+    "name": "ProtForge",
+    "url": "https://protforge.com"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "España"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "Auditoría de chatbots y asistentes con IA (RAG)",
+    "price": "3500",
+    "priceCurrency": "EUR",
+    "description": "Conjunto de evaluación con tus conversaciones reales, tasas medidas, correcciones priorizadas, banco de pruebas entregado y nueva medición. Dos semanas."
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta auditar un chatbot con IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "La auditoría tiene un precio cerrado desde 3.500 € + IVA. Tras una llamada de 30 minutos sobre tu sistema confirmamos el alcance y el precio final, sin horas ocultas. Incluye el informe, el banco de pruebas y la nueva medición tras las correcciones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dos semanas desde que tenemos la muestra de conversaciones y el acceso. La primera semana es de medición; la segunda, de plan de correcciones, entrega del banco de pruebas y nueva medición."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesitáis acceso a datos reales de nuestros clientes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Necesitamos una muestra de conversaciones reales, porque es lo que hace representativo el conjunto de evaluación. Suelen bastar unos cientos de consultas, y pueden anonimizarse o editarse antes de que lleguen a nosotros. Para ejecutar el sistema nos basta un entorno de pruebas; no necesitamos acceso de escritura a producción."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Con qué modelos y herramientas trabajáis?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con cualquiera. Trabajamos con modelos de OpenAI y Anthropic y con modelos de pesos abiertos, y con sistemas hechos con LangChain, LangGraph, LlamaIndex o código propio. Evaluamos el comportamiento de tu sistema a través de sus entradas y salidas, así que la tecnología que hay debajo importa poco."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Esto sirve para la Ley de IA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ayuda, sin prometer más de la cuenta. Si tu chatbot interactúa con personas, el artículo 50 del Reglamento (UE) 2024/1689 exige informar de que hablan con una IA, y tener medido cómo de fiables son sus respuestas es una buena base documental. La auditoría no es un dictamen jurídico ni una certificación de cumplimiento."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa después de la auditoría?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Te quedas con el informe y el banco de pruebas, y tu equipo puede ejecutar las comprobaciones en integración continua. Si quieres ayuda para aplicar las correcciones, lo presupuestamos aparte, por ejemplo como responsable de IA fraccional uno o dos días por semana. No hay obligación de continuar."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="wordmark" href="/">Prot<em>Forge</em></a>
+    <nav aria-label="Secciones">
+      <a href="#que">Qué medimos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+      <a href="/es/servicios">Servicios</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Auditoría de chatbots y asistentes con IA (RAG)</h1>
+    <p class="lede">Si tu chatbot se inventa respuestas, antes de cambiar de modelo conviene saber cuántas, cuáles y por qué. Medimos con tus propias conversaciones cuánto falla tu chatbot, asistente o RAG sobre documentos, y te decimos qué corregir primero. Desde 3.500 € + IVA, precio cerrado, dos semanas, y te quedas con el banco de pruebas.</p>
+    <a class="cta" href="mailto:hello@protforge.com?subject=Auditor%C3%ADa%20de%20chatbot%20con%20IA">Pedir la auditoría</a>
+    <a class="cta secondary" href="#como">Cómo funciona</a>
+    <p class="aside">Actualizado: 21 de noviembre de 2026</p>
+  </div>
+
+  <section id="que">
+    <h2>Qué medimos</h2>
+    <p class="intro">Empezamos construyendo un conjunto de evaluación con tus conversaciones o registros reales, porque los benchmarks genéricos dicen poco de lo que preguntan tus usuarios. Después pasamos tu sistema por ese conjunto y contamos.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Alucinaciones</h3></div>
+        <div><p>La proporción de afirmaciones sin respaldo: frases de una respuesta que ni los documentos de origen ni el resultado de las herramientas sostienen. Cada tasa va acompañada de ejemplos reales, para que veas cómo es un fallo.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Calidad de las respuestas</h3></div>
+        <div><p>Si las respuestas son correctas, completas y tienen el formato que necesita tu producto, puntuadas contra un conjunto de referencia que acordamos contigo y revisadas a mano en una muestra.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Recuperación, en sistemas RAG</h3></div>
+        <div><p>Si se recuperan los pasajes correctos y si el modelo los usa. Muchas alucinaciones de un RAG nacen como fallos de recuperación y no como errores del modelo: el documento bueno nunca llegó a la pregunta.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Agentes y llamadas a herramientas</h3></div>
+        <div><p>Fallos en ejecuciones de varios pasos: herramienta equivocada, argumentos erróneos, bucles, pasos omitidos y respuestas que ignoran lo que devolvió una herramienta.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Latencia y coste</h3></div>
+        <div><p>Tiempo y gasto por respuesta, medidos sobre el mismo conjunto, para que cada corrección se juzgue frente a lo que cuesta mantenerla en marcha.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Banco de pruebas de regresión</h3></div>
+        <div><p>Un conjunto de referencia y comprobaciones automáticas que tu equipo puede ejecutar en integración continua, de modo que el siguiente cambio de prompt, de modelo o de recuperación se pruebe antes de salir.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="entrega">
+    <h2>Qué recibes</h2>
+    <p class="intro">Cuatro cosas, todas tuyas.</p>
+    <div class="practices">
+      <div class="practice">
+        <div><h3>Informe</h3></div>
+        <div><p>Las tasas medidas con ejemplos de cada tipo de fallo, escrito para que lo puedan usar a la vez un ingeniero y quien responde del producto.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Correcciones priorizadas</h3></div>
+        <div><p>Una lista ordenada por impacto y esfuerzo: qué cambiar en los prompts, en la recuperación, en las barreras de seguridad o en la elección del modelo, y en qué orden.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Banco de pruebas</h3></div>
+        <div><p>El código y el conjunto de referencia, documentados y entregados, con comprobaciones que corren en tu integración continua.</p></div>
+      </div>
+      <div class="practice">
+        <div><h3>Nueva medición</h3></div>
+        <div><p>Cuando las primeras correcciones están aplicadas, repetimos la misma evaluación y ves el antes y el después sobre datos idénticos.</p></div>
+      </div>
+    </div>
+    <p class="aside">Para la parte técnica usamos nuestra herramienta de código abierto <b>groundcheck</b>, que puntúa una respuesta frente a sus fuentes frase a frase. El equipo viene de una investigación doctoral sobre detección de alucinaciones en modelos de lenguaje; en nuestra <a href="/research/hallucination-detectors">comparativa de detectores de alucinaciones</a> explicamos cómo evaluamos los propios detectores.</p>
+  </section>
+
+  <section id="como">
+    <h2>Cómo funciona</h2>
+    <div class="steps">
+      <div class="step"><h3>Semana 1: medir</h3><p>Construimos el conjunto de evaluación con tus conversaciones, ejecutamos tu sistema contra él y medimos alucinaciones, calidad, recuperación, fallos de agente, latencia y coste.</p></div>
+      <div class="step"><h3>Semana 2: plan y entrega</h3><p>Redactamos el informe y las correcciones priorizadas, te entregamos el banco de pruebas y el conjunto de referencia, y volvemos a medir cuando las primeras correcciones están aplicadas.</p></div>
+    </div>
+    <p class="aside">Lo que necesitamos de ti: una muestra de conversaciones reales (unos cientos de consultas, anonimizadas si lo prefieres), acceso a un entorno de pruebas o a tus registros, y una persona técnica que pueda contestar dudas sobre el sistema.</p>
+  </section>
+
+  <section id="ley">
+    <h2>Y la Ley de IA</h2>
+    <p class="intro">Un chatbot que habla con clientes o empleados suele caer en las obligaciones de transparencia del artículo 50 del Reglamento europeo de IA: la persona tiene que saber que habla con una máquina. Eso no depende de la calidad de las respuestas, pero tener medida su fiabilidad te da una documentación seria si alguien te la pide, y es el tipo de evaluación técnica que muchos planes de cumplimiento no tienen. No sustituye al asesoramiento jurídico. Si quieres ver el cuadro completo de tus sistemas, tenemos el <a href="/es/ley-ia">diagnóstico de la Ley de IA</a> y una <a href="/es/ley-ia/clasificacion-riesgo">checklist gratuita para clasificar el riesgo</a>.</p>
+  </section>
+
+  <section id="precio">
+    <h2>Precio</h2>
+    <p class="intro">Precio cerrado, sin facturar por horas.</p>
+    <div class="plans">
+      <div class="card featured">
+        <h3>Auditoría de chatbots y asistentes con IA</h3>
+        <p>Conjunto de evaluación con tus conversaciones, tasas medidas, correcciones priorizadas, banco de pruebas entregado y nueva medición. Dos semanas.</p>
+        <div class="price"><small>desde</small> 3.500 € <small>+ IVA</small></div>
+      </div>
+    </div>
+    <p class="aside">El precio final depende del número de sistemas y de cuántos pasos de agente o fuentes de datos intervienen. Lo confirmamos tras una llamada de 30 minutos, antes de empezar. Mira todos los <a href="/es/servicios">servicios</a> o <a href="/es/cuanto-cuesta-ia-empresa">cuánto cuesta implantar IA en una empresa</a>.</p>
+  </section>
+
+  <section id="faq">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto cuesta auditar un chatbot con IA?</summary><p>La auditoría tiene un precio cerrado desde 3.500 € + IVA. Tras una llamada de 30 minutos sobre tu sistema confirmamos el alcance y el precio final, sin horas ocultas. Incluye el informe, el banco de pruebas y la nueva medición tras las correcciones.</p></details>
+    <details><summary>¿Cuánto tarda?</summary><p>Dos semanas desde que tenemos la muestra de conversaciones y el acceso. La primera semana es de medición; la segunda, de plan de correcciones, entrega del banco de pruebas y nueva medición.</p></details>
+    <details><summary>¿Necesitáis acceso a datos reales de nuestros clientes?</summary><p>Necesitamos una muestra de conversaciones reales, porque es lo que hace representativo el conjunto de evaluación. Suelen bastar unos cientos de consultas, y pueden anonimizarse o editarse antes de que lleguen a nosotros. Para ejecutar el sistema nos basta un entorno de pruebas; no necesitamos acceso de escritura a producción.</p></details>
+    <details><summary>¿Con qué modelos y herramientas trabajáis?</summary><p>Con cualquiera. Trabajamos con modelos de OpenAI y Anthropic y con modelos de pesos abiertos, y con sistemas hechos con LangChain, LangGraph, LlamaIndex o código propio. Evaluamos el comportamiento de tu sistema a través de sus entradas y salidas, así que la tecnología que hay debajo importa poco.</p></details>
+    <details><summary>¿Esto sirve para la Ley de IA?</summary><p>Ayuda, sin prometer más de la cuenta. Si tu chatbot interactúa con personas, el artículo 50 del Reglamento (UE) 2024/1689 exige informar de que hablan con una IA, y tener medido cómo de fiables son sus respuestas es una buena base documental. La auditoría no es un dictamen jurídico ni una certificación de cumplimiento.</p></details>
+    <details><summary>¿Qué pasa después de la auditoría?</summary><p>Te quedas con el informe y el banco de pruebas, y tu equipo puede ejecutar las comprobaciones en integración continua. Si quieres ayuda para aplicar las correcciones, lo presupuestamos aparte, por ejemplo como responsable de IA fraccional uno o dos días por semana. No hay obligación de continuar.</p></details>
+  </section>
+
+  <section id="contacto" class="contact">
+    <h2>Pide la auditoría</h2>
+    <p>Cuéntanos qué hace tu chatbot, sobre qué documentos responde y con qué modelo y herramientas está hecho. Te contestamos en un día laborable y te proponemos una llamada de 30 minutos.</p>
+    <a class="mail" href="mailto:hello@protforge.com?subject=Auditor%C3%ADa%20de%20chatbot%20con%20IA">hello@protforge.com</a>
+    <p>Aceptamos pocos encargos a la vez para que cada uno tenga atención directa.</p>
+  </section>
+  <footer>
+    <span>PROTFORGE SL</span>
+    <span>Barcelona, España</span>
+    <span>NIF B75512434</span>
+    <span>© 2026</span>
+    <span><a href="/legal">Aviso legal</a></span>
+    <span><a href="/es/servicios">Servicios</a></span>
+    <span><a href="/es/visibilidad-ia">Visibilidad en IA</a></span>
+    <span><a href="/es/ley-ia">Ley de IA</a></span>
+    <span><a href="/es/auditoria-chatbot-ia">Auditoría de chatbots</a></span>
+    <span><a href="/es/cuanto-cuesta-ia-empresa">Cuánto cuesta la IA</a></span>
+  </footer>
+</div>
+</body>
+</html>
